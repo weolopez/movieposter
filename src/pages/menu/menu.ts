@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, ViewController, Platform, Slides } from 'ionic-angular';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
+import { RatingsPage } from '../ratings/ratings';
 
 @Component({
   selector: 'page-menu',
@@ -10,34 +11,30 @@ import { ImdbPage } from '../imdb/imdb';
 
 export class MenuPage {
   @ViewChild('slides') slides: Slides;
+  @ViewChild('slidesWrapper') slidesWrapper: ElementRef;
 
   private unregisterKeyboardListener;
 
   menuItems = [
     {
       title: "Speak",
-      buttonPage: null,
-      pageWhenActive: null,
+      buttonPage: ShowTimesPage
     },
     {
       title: "Show Times",
-      buttonPage: ShowTimesPage,
-      pageWhenActive: null,
+      buttonPage: ShowTimesPage
     },
     {
       title: "Purchase Tickets",
-      buttonPage: null,
-      pageWhenActive: ImdbPage,
+      buttonPage: ShowTimesPage
     },
     {
       title: "View IMDB",
       buttonPage: ImdbPage,
-      pageWhenActive: null,
     },
     {
       title: "View Ratings",
-      buttonPage: null,
-      pageWhenActive: ShowTimesPage,
+      buttonPage: RatingsPage,
     },
   ];
 
@@ -48,7 +45,9 @@ export class MenuPage {
   ) { }
 
   gotoPage(page) {
-    this.navCtrl.push(page);
+    if (page) {
+      this.navCtrl.push(page);
+    }
   }
 
   ionViewDidEnter() {
@@ -60,18 +59,14 @@ export class MenuPage {
   }
 
   handleKeyboardEvents(event) {
-    console.log(this.slides);
     switch (event.key) {
       case "ArrowDown":
       this.viewCtrl.dismiss();
       break;
 
       case "ArrowUp":
-      let index = this.slides.getActiveIndex();
-      let activeMenuItem = this.menuItems[index];
-
-      //this.navCtrl.push(activeMenuItem.pageWhenActive);
-      this.navCtrl.push(ImdbPage);
+      let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next button');
+      activeButton.click();
 
       default:
       break;
