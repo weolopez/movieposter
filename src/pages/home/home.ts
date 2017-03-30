@@ -27,7 +27,7 @@ export class HomePage {
 
   presentModal() {
     if (!this.modalShowing) {
-      this.modal = this.modalCtrl.create(MenuPage, {});
+      this.modal = this.modalCtrl.create(MenuPage, {}, {showBackdrop: false});
       this.modal.onDidDismiss(() => this.modalShowing = false)
       this.modal.present();
       this.modalShowing = true;

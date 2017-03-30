@@ -1,20 +1,8 @@
 <ion-content class="menu-page">
 
-    <ion-slides slidesPerView="3" loop>
-        <ion-slide>
-            <button ion-button large>Speak</button>
-        </ion-slide>
-        <ion-slide>
-            <button ion-button large>Show Times</button>
-        </ion-slide>
-        <ion-slide>
-            <button ion-button large>Purchase Tickets</button>
-        </ion-slide>
-        <ion-slide>
-            <button ion-button large>View IMDB</button>
-        </ion-slide>
-        <ion-slide>
-            <button ion-button large>View Ratings</button>
+    <ion-slides #slides slidesPerView="3" loop>
+        <ion-slide *ngFor="let slide of menuItems">
+            <button ion-button large (click)="gotoPage(slide.buttonPage)">{{slide.title}}</button>
         </ion-slide>
     </ion-slides>
 </ion-content>
