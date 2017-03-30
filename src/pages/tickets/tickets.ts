@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 
 @Component({
-  selector: 'page-showtimes',
-  templateUrl: 'showtimes.html'
+  selector: 'page-tickets',
+  templateUrl: 'tickets.html'
 })
 
-export class ShowTimesPage {
+export class TicketsPage {
   private unregisterKeyboardListener;
 
   constructor(public navCtrl: NavController, public platform: Platform) {

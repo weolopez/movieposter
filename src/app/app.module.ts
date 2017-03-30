@@ -7,6 +7,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { ShowTimesPage } from '../pages/showtimes/showtimes';
 import { ImdbPage } from '../pages/imdb/imdb';
 import { RatingsPage } from '../pages/ratings/ratings';
+import { TicketsPage } from '../pages/tickets/tickets';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +19,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MenuPage,
     ShowTimesPage,
     ImdbPage,
-    RatingsPage
+    RatingsPage,
+    TicketsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MenuPage,
     ShowTimesPage,
     ImdbPage,
-    RatingsPage
+    RatingsPage,
+    TicketsPage
   ],
   providers: [
     StatusBar,

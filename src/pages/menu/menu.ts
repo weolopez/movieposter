@@ -3,6 +3,7 @@ import { NavController, ViewController, Platform, Slides } from 'ionic-angular';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
+import { TicketsPage } from '../tickets/tickets';
 
 @Component({
   selector: 'page-menu',
@@ -26,7 +27,7 @@ export class MenuPage {
     },
     {
       title: "Purchase Tickets",
-      buttonPage: ShowTimesPage
+      buttonPage: TicketsPage
     },
     {
       title: "View IMDB",
@@ -46,7 +47,7 @@ export class MenuPage {
 
   gotoPage(page) {
     if (page) {
-      this.navCtrl.push(page);
+      this.navCtrl.push(page, {}, {animation: "md-transition"});
     }
   }
 

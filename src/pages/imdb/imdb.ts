@@ -28,7 +28,7 @@ export class ImdbPage {
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
-        this.navCtrl.pop();
+        this.navCtrl.pop({animation: "md-transition"});
         break;
 
       default:
