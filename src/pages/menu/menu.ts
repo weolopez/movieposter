@@ -4,6 +4,7 @@ import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
 import { TicketsPage } from '../tickets/tickets';
+import { TrailerPage } from '../trailer/trailer';
 
 @Component({
   selector: 'page-menu',
@@ -32,6 +33,10 @@ export class MenuPage {
     {
       title: "View IMDB",
       buttonPage: ImdbPage,
+    },
+    {
+      title: "View Trailer",
+      buttonPage: TrailerPage,
     },
     {
       title: "View Ratings",
