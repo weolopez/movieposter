@@ -12,6 +12,7 @@ export class HomePage {
   private modal: Modal;
   private modalShowing: Boolean;
   private unregisterKeyboardListener;
+  public backgroundImage;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController) {
 
@@ -19,6 +20,7 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
+    this.backgroundImage = "lego_batman.jpg"
   }
 
   ionViewDidLeave() {

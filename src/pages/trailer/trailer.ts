@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, Platform } from 'ionic-angular';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'page-trailer',
@@ -10,8 +11,13 @@ import { NavController, Platform } from 'ionic-angular';
 export class TrailerPage {
   private unregisterKeyboardListener;
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
+  public trailerUrl;
 
+  constructor(public navCtrl: NavController, public platform: Platform, public sanitizer: DomSanitizer) {
+
+  }
+  ngOnInit() {
+    this.trailerUrl = "https://www.youtube.com/embed/h6DOpfJzmo0" + "?autoplay=1";
   }
 
   ionViewDidLoad() {
@@ -34,6 +40,10 @@ export class TrailerPage {
       default:
         break;
     }
+  }
+  getSafeTrailerUrl() {
+    let safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.trailerUrl);
+    return safeUrl;
   }
 
 }
