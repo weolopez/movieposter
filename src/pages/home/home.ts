@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { BluemixService } from '../../app/services/bluemix.service';
+import { MovieService } from '../../app/services/movie.service';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
@@ -21,22 +22,23 @@ export class HomePage {
   private modal: Modal;
   private modalShowing: Boolean;
   private unregisterKeyboardListener;
-  public backgroundImage;
   private recognition: any;
   private intents: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef) {
+  public selectedMovie;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef, private movieService: MovieService) {
       this.intents = new Map();
   }
 
    ngOnInit() {
       console.log("OnInit Ran...");
       this.loadIntents();
+      this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
   ionViewDidEnter() {
     this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-    this.backgroundImage = "lego_batman.jpg"
   }
 
   ionViewDidLeave() {
@@ -66,7 +68,7 @@ export class HomePage {
          });
          this.recognition.onresult = (event => {
             if (event.results.length > 0) {
-                  console.log('Output STT: ', event.results[0][0].transcript);            
+                  console.log('Output STT: ', event.results[0][0].transcript);
                this.ask(event.results[0][0].transcript);
             }
             this.stopRecognition();
@@ -90,10 +92,10 @@ export class HomePage {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
          this.modal.dismiss();
-      });  
+      });
       this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
          console.log(response);
-      });    
+      });
   }
 
   handleKeyboardEvents(event) {
