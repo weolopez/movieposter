@@ -4,11 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { MenuPage } from '../pages/menu/menu';
+//import { MenuPage } from '../pages/menu/menu';
+import { ApiaiService } from './services/apiai.service';
+
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [ApiaiService]
 })
 export class MyApp {
   rootPage:any = HomePage;
