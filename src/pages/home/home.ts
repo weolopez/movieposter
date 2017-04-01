@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
+import { BluemixService } from '../../app/services/bluemix.service';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
@@ -24,7 +25,7 @@ export class HomePage {
   private recognition: any;
   private intents: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private cdRef:ChangeDetectorRef) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef) {
       this.intents = new Map();
   }
 
@@ -83,14 +84,15 @@ export class HomePage {
 
   ask(text: any) {
      this.apiaiService.send(text).subscribe(response => {
-        
          console.log(response);
-
          let page = this.intents.get(response.result.action);
          if (page) {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
          this.modal.dismiss();
+      });  
+      this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
+         console.log(response);
       });    
   }
 
@@ -113,6 +115,7 @@ export class HomePage {
     this.intents.set('show-trailer', TrailerPage);
     this.intents.set('show-review', RatingsPage);
     this.intents.set('show-actors', ActorsPage);
+    this.intents.set('input.unknown', TrailerPage);
   }
 
 }

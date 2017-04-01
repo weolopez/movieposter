@@ -6,12 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 //import { MenuPage } from '../pages/menu/menu';
 import { ApiaiService } from './services/apiai.service';
+import { BluemixService } from './services/bluemix.service';
 
 
 
 @Component({
   templateUrl: 'app.html',
-  providers: [ApiaiService]
+  providers: [ApiaiService,BluemixService]
 })
 export class MyApp {
   rootPage:any = HomePage;
