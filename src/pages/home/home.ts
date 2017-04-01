@@ -1,7 +1,16 @@
-import { Component } from '@angular/core';
-import { MenuPage } from '../menu/menu'
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { MenuPage } from '../menu/menu';
+import { ApiaiService } from '../../app/services/apiai.service';
+import { BluemixService } from '../../app/services/bluemix.service';
+import { ShowTimesPage } from '../showtimes/showtimes';
+import { ImdbPage } from '../imdb/imdb';
+import { RatingsPage } from '../ratings/ratings';
+import { TicketsPage } from '../tickets/tickets';
+import { TrailerPage } from '../trailer/trailer';
+import { ActorsPage } from '../actors/actors';
 
 import { NavController, ModalController, Modal, Platform, ViewController } from 'ionic-angular';
+declare var webkitSpeechRecognition: any;
 
 @Component({
   selector: 'page-home',
@@ -13,9 +22,16 @@ export class HomePage {
   private modalShowing: Boolean;
   private unregisterKeyboardListener;
   public backgroundImage;
+  private recognition: any;
+  private intents: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef) {
+      this.intents = new Map();
+  }
 
+   ngOnInit() {
+      console.log("OnInit Ran...");
+      this.loadIntents();
   }
 
   ionViewDidEnter() {
@@ -36,15 +52,70 @@ export class HomePage {
     }
   }
 
+  startRecognition() {
+      this.platform.ready().then(() => {
+
+         this.recognition = new webkitSpeechRecognition();
+         //this.recognition = new SpeechRecognition();
+         this.recognition.lang = 'en-US';
+         this.recognition.onnomatch = (event => {
+            //this.showAlert('No match found.');
+         });
+         this.recognition.onerror = (event => {
+            //this.showAlert('Error happens.');
+         });
+         this.recognition.onresult = (event => {
+            if (event.results.length > 0) {
+                  console.log('Output STT: ', event.results[0][0].transcript);            
+               this.ask(event.results[0][0].transcript);
+            }
+            this.stopRecognition();
+         });
+         this.recognition.start();
+      });
+  }
+
+  stopRecognition() {
+      if (this.recognition) {
+        this.recognition.stop();
+        this.recognition = null;
+      }
+  }
+
+  ask(text: any) {
+     this.apiaiService.send(text).subscribe(response => {
+         console.log(response);
+         let page = this.intents.get(response.result.action);
+         if (page) {
+            this.navCtrl.push(page, {}, {animation: "md-transition"});
+         }
+         this.modal.dismiss();
+      });  
+      this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
+         console.log(response);
+      });    
+  }
+
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowUp":
         this.presentModal();
+        this.startRecognition();
         break;
 
       default:
         break;
     }
+  }
+
+  loadIntents() {
+    this.intents.set('show-schedule', ShowTimesPage);
+    this.intents.set('show-tickets', TicketsPage);
+    this.intents.set('show-imdb', ImdbPage);
+    this.intents.set('show-trailer', TrailerPage);
+    this.intents.set('show-review', RatingsPage);
+    this.intents.set('show-actors', ActorsPage);
+    this.intents.set('input.unknown', TrailerPage);
   }
 
 }
