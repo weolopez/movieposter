@@ -105,6 +105,10 @@ export class HomePage {
         this.startRecognition();
         break;
 
+      case "Escape":
+        this.navCtrl.pop({animation: "md-transition"});
+        break;
+
       default:
         break;
     }

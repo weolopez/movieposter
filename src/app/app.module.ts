@@ -15,6 +15,8 @@ import { ActorsPage } from '../pages/actors/actors';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { MovieService } from './services/movie.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -47,6 +49,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    MovieService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
