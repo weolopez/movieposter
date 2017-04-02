@@ -108,17 +108,9 @@ export class HomePage {
       });
   }
 
-  activate(e, type) {
-    alert(type+e.direction);
-    console.log(type);
-    console.dir(e);
-    e.key="ArrowUp";
-    this.handleKeyboardEvents(e);
-  }
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowUp":
-        this.presentModal();
         this.startRecognition();
         break;
 

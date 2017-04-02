@@ -1,6 +1,6 @@
-<div (press)="activate($event, 'press')" 
-     (swipe)="activate($event, 'swipe')"  
-     #poster
+<div (press)="showInput=!showInput" 
      class="fixed-content poster-page" 
      [style.backgroundImage]="'url(' + selectedMovie.posterUrl + ')'"
-></div>
+>
+<input *ngIf="showInput" type="text" x-webkit-speech>
+</div>
