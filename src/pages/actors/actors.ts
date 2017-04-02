@@ -16,9 +16,6 @@ export class ActorsPage {
   constructor(public navCtrl: NavController, public platform: Platform, public sanitizer: DomSanitizer) {
 
   }
-  ngOnInit() {
-    this.actorUrl = "https://www.youtube.com/embed/h6DOpfJzmo0" + "?autoplay=1";
-  }
 
   ionViewDidLoad() {
   }

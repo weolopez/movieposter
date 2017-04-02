@@ -90,9 +90,11 @@ export class HomePage {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
          this.modal.dismiss();
-      });  
-      this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
+      }); 
+      //get image- will this be in firebase? 
+      this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
          console.log(response);
+         // add response data to Firebase
       });    
   }
 
