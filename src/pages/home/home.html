@@ -1,1 +1,6 @@
-<div class="fixed-content poster-page" [style.backgroundImage]="'url(' + selectedMovie.posterUrl + ')'"></div>
+<div (press)="activate($event, 'press')" 
+     (swipe)="activate($event, 'swipe')"  
+     #poster
+     class="fixed-content poster-page" 
+     [style.backgroundImage]="'url(' + selectedMovie.posterUrl + ')'"
+></div>
