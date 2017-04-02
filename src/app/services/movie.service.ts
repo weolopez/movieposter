@@ -11,7 +11,7 @@ export class MovieService{
     private selectedMovie: any;
 
     constructor(private http: Http) {
-        this.movieUrl = "../../assets/json/movies.json";
+        this.movieUrl = "assets/json/movies.json";
     }
 
     getMovies() {
