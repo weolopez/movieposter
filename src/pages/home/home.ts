@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { BluemixService } from '../../app/services/bluemix.service';
@@ -10,7 +10,7 @@ import { TicketsPage } from '../tickets/tickets';
 import { TrailerPage } from '../trailer/trailer';
 import { ActorsPage } from '../actors/actors';
 
-import { NavController, ModalController, Modal, Platform, ViewController } from 'ionic-angular';
+import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -27,8 +27,18 @@ export class HomePage {
 
   public selectedMovie;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef, private movieService: MovieService) {
+  constructor(
+              public navCtrl: NavController, 
+              public modalCtrl: ModalController, 
+              public platform: Platform, 
+              public viewCtrl: ViewController, 
+              private apiaiService:ApiaiService, 
+              private bluemixService:BluemixService, 
+              private cdRef:ChangeDetectorRef, 
+              private movieService: MovieService
+              ) {
       this.intents = new Map();
+      
   }
 
    ngOnInit() {
@@ -101,7 +111,6 @@ export class HomePage {
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowUp":
-        this.presentModal();
         this.startRecognition();
         break;
 
