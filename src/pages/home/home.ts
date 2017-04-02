@@ -112,6 +112,7 @@ export class HomePage {
     switch (event.key) {
       case "ArrowUp":
         this.startRecognition();
+        this.presentModal();
         break;
 
       case "Escape":
