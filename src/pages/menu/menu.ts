@@ -83,7 +83,7 @@ export class MenuPage {
       break;
 
       case "ArrowUp":
-      let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next button');
+      let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next .menu-item');
       let menuItem = activeButton.attributes["data-menu-item"].value;
       let page = this.menuItems[menuItem].buttonPage;
       this.gotoPage(page);
