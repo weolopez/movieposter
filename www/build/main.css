@@ -24528,20 +24528,40 @@ ion-navbar.toolbar {
   background: transparent;
 }
 
-.menu-page .swiper-slide-next button {
-  border: 3px solid red;
+.menu-page .menu-item {
+  border-radius: 10px;
+}
+
+.menu-page .swiper-slide-next .menu-item {
+  border: 3px solid #4ca90c;
 }
 
 .menu-page .slide-zoom {
   height: 100px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
   overflow: auto;
 }
 
-.menu-page .slide-zoom button {
+.menu-page .slide-zoom .menu-item {
+  position: relative;
   width: 75%;
   height: 90px;
   white-space: normal;
+  background-color: rgba(0, 0, 9, 0.7);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 0px;
+  background-size: 60px;
+  text-transform: initial;
+}
+
+.menu-page .slide-zoom .menu-item span {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  font-size: 0.8em;
+  height: initial;
 }
 
 .menu-page .scroll-content {
@@ -24549,6 +24569,15 @@ ion-navbar.toolbar {
 }
 
 .menu-page .slides-wrapper {
+  height: 100%;
+}
+
+.modal-wrapper.full-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
   height: 100%;
 }
 
