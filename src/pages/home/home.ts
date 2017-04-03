@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { BluemixService } from '../../app/services/bluemix.service';
@@ -12,6 +12,7 @@ import { ActorsPage } from '../actors/actors';
 
 import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
 import { M2EService } from "../../app/services/m2e.service";
+import { AnalyticsService } from "../../app/services/analytics.service";
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -35,10 +36,11 @@ export class HomePage {
     public viewCtrl: ViewController,
     private apiaiService: ApiaiService,
     private bluemixService: BluemixService,
-    private cdRef: ChangeDetectorRef,
     private movieService: MovieService,
-    private m2e: M2EService
-  ) {
+    private m2e: M2EService,
+    private analytics: AnalyticsService
+  ) 
+  {
     this.intents = new Map();
   }
 
@@ -100,17 +102,24 @@ export class HomePage {
   }
 
   ask(text: any) {
-    this.apiaiService.send(text).subscribe(response => {
-      console.log(response);
-      let page = this.intents.get(response.result.action);
-      if (page) {
-        this.navCtrl.push(page, {}, { animation: "md-transition" });
-      }
-      this.modal.dismiss();
-    });
-    this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
-      console.log(response);
-    });
+     this.apiaiService.send(text).subscribe(response => {
+         console.log(response);
+         let page = this.intents.get(response.result.action);
+         this.analytics.addSpeech(text,response.result.action );
+         if (page) {
+            this.navCtrl.push(page, {}, {animation: "md-transition"});
+         }
+         this.modal.dismiss();  
+     });
+  }
+
+  analyzeImage()
+  {
+     //get image- will this be in firebase? 
+      this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
+         console.log(response.images[0]);
+         this.analytics.addBluemix(response.images[0]);
+      });  
   }
 
   handleKeyboardEvents(event) {
@@ -118,6 +127,7 @@ export class HomePage {
       case "ArrowUp":
         this.startRecognition();
         this.presentModal();
+        this.analyzeImage();
         this.m2e.postData(
           {
             "timestamp":  new Date().toISOString(),
@@ -151,6 +161,8 @@ export class HomePage {
     this.intents.set('show-review', RatingsPage);
     this.intents.set('show-actors', ActorsPage);
     this.intents.set('input.unknown', TrailerPage);
+    this.intents.set('smalltalk.greetings', RatingsPage);
+
   }
 
 }

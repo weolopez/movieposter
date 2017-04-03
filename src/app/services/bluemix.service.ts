@@ -8,30 +8,37 @@ import 'rxjs/Rx'
 export class BluemixService{
     http:any;
     accessToken: String;
-    baseUrl: String;
+    baseUrl: string;
 
     constructor(http: Http) {
         this.http = http;
-        this.accessToken = 'cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0';
-        this.baseUrl = "https://gateway-a.watsonplatform.net/visual-recognition/api";
-    }
+        //this.apiKey = 'cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0';
+        this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        //running server locally to debug
+        //this.baseUrl = "http://localhost:3000/api/classify";
+        
+       
+}
 
    
 
-    send(text: any) {
-        let body = JSON.stringify({query: text, lang: "en", sessionId: "bravehackers"});
-        let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8',
-                                    "Authorization": "Bearer " + this.accessToken });
+    send(pic: any) {
+        let body = 'url=' + pic;
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.baseUrl + "query", body, options)
+
+        return this.http.post(this.baseUrl, body, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
     handleError(error:any) {
-        console.error(error);
         return Observable.throw(error.json().error || 'Bluemix Server error');
     }
+
+
+
 
     
 
