@@ -20,26 +20,32 @@ export class MenuPage {
   menuItems = [
     {
       title: "Speak",
+      icon: "../assets/images/svg/voiceCommandIco.svg",
       buttonPage: ShowTimesPage
     },
     {
       title: "Show Times",
+      icon: "../assets/images/svg/showTimesIco.svg",
       buttonPage: ShowTimesPage
     },
     {
       title: "Purchase Tickets",
+      icon: "../assets/images/svg/ticketsIco.svg",
       buttonPage: TicketsPage
     },
     {
       title: "View IMDB",
+      icon: "../assets/images/svg/imdbIco.svg",
       buttonPage: ImdbPage,
     },
     {
       title: "View Trailer",
+      icon: "../assets/images/svg/trailerIco.svg",
       buttonPage: TrailerPage,
     },
     {
       title: "View Ratings",
+      icon: "../assets/images/svg/ratingsIco.svg",
       buttonPage: RatingsPage,
     },
   ];
@@ -77,7 +83,7 @@ export class MenuPage {
       break;
 
       case "ArrowUp":
-      let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next button');
+      let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next .menu-item');
       let menuItem = activeButton.attributes["data-menu-item"].value;
       let page = this.menuItems[menuItem].buttonPage;
       this.gotoPage(page);

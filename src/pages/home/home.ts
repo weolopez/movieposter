@@ -39,7 +39,7 @@ export class HomePage {
     private movieService: MovieService,
     private m2e: M2EService,
     private analytics: AnalyticsService
-  ) 
+  )
   {
     this.intents = new Map();
   }
@@ -109,17 +109,17 @@ export class HomePage {
          if (page) {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
-         this.modal.dismiss();  
+         this.modal.dismiss();
      });
   }
 
   analyzeImage()
   {
-     //get image- will this be in firebase? 
+     //get image- will this be in firebase?
       this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
          console.log(response.images[0]);
          this.analytics.addBluemix(response.images[0]);
-      });  
+      });
   }
 
   handleKeyboardEvents(event) {
