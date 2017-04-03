@@ -7,12 +7,13 @@ import { MoviesPage } from '../pages/movies/movies';
 
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
+import { AnalyticsService } from './services/analytics.service';
 
 
 
 @Component({
   templateUrl: 'app.html',
-  providers: [ApiaiService, BluemixService]
+  providers: [ApiaiService, BluemixService, AnalyticsService]
 })
 
 export class MyApp {

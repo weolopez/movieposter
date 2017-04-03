@@ -12,6 +12,7 @@ import { ActorsPage } from '../actors/actors';
 
 import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
 import { M2EService } from "../../app/services/m2e.service";
+import { AnalyticsService } from "../../app/services/analytics.service";
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -36,7 +37,8 @@ export class HomePage {
     private apiaiService: ApiaiService,
     private bluemixService: BluemixService,
     private movieService: MovieService,
-    private m2e: M2EService
+    private m2e: M2EService,
+    private analytics: AnalyticsService
   ) 
   {
     this.intents = new Map();
@@ -99,6 +101,7 @@ export class HomePage {
      this.apiaiService.send(text).subscribe(response => {
          console.log(response);
          let page = this.intents.get(response.result.action);
+         this.analytics.addSpeech(text,response.result.action );
          if (page) {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
@@ -110,8 +113,8 @@ export class HomePage {
   {
      //get image- will this be in firebase? 
       this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
-         console.log(response.images);
-         // add response data to Firebase
+         console.log(response.images[0]);
+         this.analytics.addBluemix(response.images[0]);
       });  
   }
 

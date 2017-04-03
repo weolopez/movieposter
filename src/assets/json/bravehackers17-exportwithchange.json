@@ -451,18 +451,49 @@
       } ]
     }
   },
-  "analytics": {
-    "blah1" : [{
-       "posterid" : "kelleytest0",
-       "timestamp": "timestamp",
-       "bluemix": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],     "image":"2.jpg",     "faces":[],"text":"","words":[]},
+  "bluemix": {
+    "kelleytest0" : [{
+       "timestamp": "timestamp1",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],                "image":"2.jpg",     "faces":[],"text":"","words":[]},
        "speech": {"text": "ratings", "intent": "schedule"}
-    }],
-    "blah2" : [{
-       "posterid" : "kelleytest0",
-       "timestamp": "timestamp",
-       "bluemix": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],     "image":"2.jpg",     "faces":[],"text":"","words":[]},
+    },{
+       "timestamp": "timestamp2",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],                "image":"2.jpg",     "faces":[],"text":"","words":[]},
+       "speech": {"text": "ratings", "intent": "schedule"}
+    },{
+       "timestamp": "timestamp2",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],                "image":"2.jpg",     "faces":[],"text":"","words":[]},
+       "speech": {"text": "ratings", "intent": "schedule"}
+    }
+    ],
+    "kelleytest1" : [{
+       "timestamp": "timestamp4",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],     "image":"2.jpg",     "faces":[],"text":"","words":[]},
+       "speech": {"text": "ratings", "intent": "schedule"}
+    },{
+       "timestamp": "timestamp5",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],     "image":"2.jpg",     "faces":[],"text":"","words":[]},
+       "speech": {"text": "ratings", "intent": "schedule"}
+    },{
+       "timestamp": "timestamp6",
+       "visualrecognition": {"classifiers":[{"classes":[{"class":"clothing store","score":0.992,"type_hierarchy":"/shop/clothing store"},{"class":"shop","score":0.992},{"class":"sage green color","score":0.795},{"class":"gray color","score":0.731}],"classifier_id":"default","name":"default"}],     "image":"2.jpg",     "faces":[],"text":"","words":[]},
        "speech": {"text": "ratings", "intent": "schedule"}
     }]
-  }
+  },
+   "speech": {
+    "kelleytest0" : [{
+       "timestamp": "timestamp1",
+       "speech": {"text": "ratings", "intent": "schedule"}
+    },{
+       "timestamp": "timestamp2",
+       "speech": {"text": "ratings", "intent": "schedule"}
+    },{
+       "timestamp": "timestamp2",
+       "speech": {"text": "ratings", "intent": "schedule"}
+    }
+    ],
+    "kelleytest1" : [{
+       "timestamp": "timestamp4",
+       "speech": {"text": "ratings", "intent": "schedule"}
+    }]
 }  
