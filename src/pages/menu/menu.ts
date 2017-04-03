@@ -20,26 +20,32 @@ export class MenuPage {
   menuItems = [
     {
       title: "Speak",
+      icon: "../assets/images/svg/voiceCommandIco.svg",
       buttonPage: ShowTimesPage
     },
     {
       title: "Show Times",
+      icon: "../assets/images/svg/showTimesIco.svg",
       buttonPage: ShowTimesPage
     },
     {
       title: "Purchase Tickets",
+      icon: "../assets/images/svg/ticketsIco.svg",
       buttonPage: TicketsPage
     },
     {
       title: "View IMDB",
+      icon: "../assets/images/svg/imdbIco.svg",
       buttonPage: ImdbPage,
     },
     {
       title: "View Trailer",
+      icon: "../assets/images/svg/trailerIco.svg",
       buttonPage: TrailerPage,
     },
     {
       title: "View Ratings",
+      icon: "../assets/images/svg/ratingsIco.svg",
       buttonPage: RatingsPage,
     },
   ];
