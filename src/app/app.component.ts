@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-//import { MenuPage } from '../pages/menu/menu';
+import { MoviesPage } from '../pages/movies/movies';
+
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 
@@ -12,10 +12,11 @@ import { BluemixService } from './services/bluemix.service';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [ApiaiService,BluemixService]
+  providers: [ApiaiService, BluemixService]
 })
+
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = MoviesPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

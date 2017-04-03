@@ -1,7 +1,8 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { BluemixService } from '../../app/services/bluemix.service';
+import { MovieService } from '../../app/services/movie.service';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
@@ -9,7 +10,7 @@ import { TicketsPage } from '../tickets/tickets';
 import { TrailerPage } from '../trailer/trailer';
 import { ActorsPage } from '../actors/actors';
 
-import { NavController, ModalController, Modal, Platform, ViewController } from 'ionic-angular';
+import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -21,22 +22,33 @@ export class HomePage {
   private modal: Modal;
   private modalShowing: Boolean;
   private unregisterKeyboardListener;
-  public backgroundImage;
   private recognition: any;
   private intents: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public platform: Platform, public viewCtrl: ViewController, private apiaiService:ApiaiService, private bluemixService:BluemixService, private cdRef:ChangeDetectorRef) {
+  public selectedMovie;
+
+  constructor(
+              public navCtrl: NavController, 
+              public modalCtrl: ModalController, 
+              public platform: Platform, 
+              public viewCtrl: ViewController, 
+              private apiaiService:ApiaiService, 
+              private bluemixService:BluemixService, 
+              private cdRef:ChangeDetectorRef, 
+              private movieService: MovieService
+              ) {
       this.intents = new Map();
+      
   }
 
    ngOnInit() {
       console.log("OnInit Ran...");
       this.loadIntents();
+      this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
   ionViewDidEnter() {
     this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-    this.backgroundImage = "lego_batman.jpg"
   }
 
   ionViewDidLeave() {
@@ -66,7 +78,7 @@ export class HomePage {
          });
          this.recognition.onresult = (event => {
             if (event.results.length > 0) {
-                  console.log('Output STT: ', event.results[0][0].transcript);            
+                  console.log('Output STT: ', event.results[0][0].transcript);
                this.ask(event.results[0][0].transcript);
             }
             this.stopRecognition();
@@ -89,20 +101,29 @@ export class HomePage {
          if (page) {
             this.navCtrl.push(page, {}, {animation: "md-transition"});
          }
-         this.modal.dismiss();
-      }); 
-      //get image- will this be in firebase? 
+         this.modal.dismiss();  
+     });
+  }
+
+  analyzeImage()
+  {
+     //get image- will this be in firebase? 
       this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
-         console.log(response);
+         console.log(response.images);
          // add response data to Firebase
-      });    
+      });  
   }
 
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowUp":
-        this.presentModal();
         this.startRecognition();
+        this.presentModal(); 
+        this.analyzeImage();
+        break;
+
+      case "Escape":
+        this.navCtrl.pop({animation: "md-transition"});
         break;
 
       default:
@@ -118,6 +139,8 @@ export class HomePage {
     this.intents.set('show-review', RatingsPage);
     this.intents.set('show-actors', ActorsPage);
     this.intents.set('input.unknown', TrailerPage);
+    this.intents.set('smalltalk.greetings', RatingsPage);
+
   }
 
 }

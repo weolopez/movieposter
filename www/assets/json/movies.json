@@ -1,0 +1,11 @@
+[{
+        "title": "The Lego Batman Movie",
+        "posterUrl": "../assets/images/lego_batman.jpg",
+        "trailerUrl": "https://www.youtube.com/embed/h6DOpfJzmo0"
+    },
+    {
+        "title": "Justice League",
+        "posterUrl": "../assets/images/justice_league.jpg",
+        "trailerUrl": "https://www.youtube.com/embed/fIHH5-HVS9o"
+    }
+]

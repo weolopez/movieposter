@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import {DomSanitizer} from '@angular/platform-browser';
 
+import { MovieService } from '../../app/services/movie.service';
+
 @Component({
   selector: 'page-trailer',
   templateUrl: 'trailer.html'
@@ -11,13 +13,13 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class TrailerPage {
   private unregisterKeyboardListener;
 
-  public trailerUrl;
+  public selectedMovie;
 
-  constructor(public navCtrl: NavController, public platform: Platform, public sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, public platform: Platform, public sanitizer: DomSanitizer, private movieService: MovieService) {
 
   }
   ngOnInit() {
-    this.trailerUrl = "https://www.youtube.com/embed/h6DOpfJzmo0" + "?autoplay=1";
+    this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
   ionViewDidLoad() {
@@ -42,7 +44,7 @@ export class TrailerPage {
     }
   }
   getSafeTrailerUrl() {
-    let safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.trailerUrl);
+    let safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.selectedMovie.trailerUrl + "?autoplay=1");
     return safeUrl;
   }
 
