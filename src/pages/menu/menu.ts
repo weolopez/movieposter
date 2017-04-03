@@ -47,13 +47,13 @@ export class MenuPage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
-    public platform: Platform
+    public platform: Platform,
+    private element: ElementRef
   ) { }
 
-  gotoPage(page) {
-    if (page) {
-      this.navCtrl.push(page, {}, {animation: "md-transition"});
-    }
+  ngOnInit() {
+    // Make the modal full screen
+    this.element.nativeElement.parentNode.classList.add("full-screen");
   }
 
   ionViewDidEnter() {
@@ -62,6 +62,12 @@ export class MenuPage {
 
   ionViewDidLeave() {
     this.unregisterKeyboardListener();
+  }
+
+  gotoPage(page) {
+    if (page) {
+      this.navCtrl.push(page, {}, {animation: "md-transition"});
+    }
   }
 
   handleKeyboardEvents(event) {

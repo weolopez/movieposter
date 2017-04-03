@@ -58,6 +58,10 @@ export class HomePage {
     this.unregisterKeyboardListener();
   }
 
+  showMenu() {
+    this.goToPage(MenuPage);
+  }
+
   presentModal() {
     if (!this.modalShowing) {
       this.modal = this.modalCtrl.create(MenuPage, {}, { showBackdrop: false });
@@ -143,6 +147,10 @@ export class HomePage {
       default:
         break;
     }
+  }
+
+  goToPage(page: Component) {
+    this.navCtrl.push(page, {animation: "md-transition"});
   }
 
   loadIntents() {
