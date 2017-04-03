@@ -24528,6 +24528,12 @@ ion-navbar.toolbar {
   background: transparent;
 }
 
+@media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {
+  html {
+    zoom: 2.5;
+  }
+}
+
 .menu-page .menu-item {
   border-radius: 10px;
 }
