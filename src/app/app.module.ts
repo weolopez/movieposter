@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MovieService } from './services/movie.service';
 
 import { AngularFireModule } from 'angularfire2';
+import { M2EService } from "./services/m2e.service";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -61,6 +62,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    M2EService,
     MovieService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -11,6 +11,7 @@ import { TrailerPage } from '../trailer/trailer';
 import { ActorsPage } from '../actors/actors';
 
 import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
+import { M2EService } from "../../app/services/m2e.service";
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -28,22 +29,23 @@ export class HomePage {
   public selectedMovie;
 
   constructor(
-              public navCtrl: NavController, 
-              public modalCtrl: ModalController, 
-              public platform: Platform, 
-              public viewCtrl: ViewController, 
-              private apiaiService:ApiaiService, 
-              private bluemixService:BluemixService, 
-              private movieService: MovieService
-              ) {
-      this.intents = new Map();
-      
+    public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public platform: Platform,
+    public viewCtrl: ViewController,
+    private apiaiService: ApiaiService,
+    private bluemixService: BluemixService,
+    private movieService: MovieService,
+    private m2e: M2EService
+  ) 
+  {
+    this.intents = new Map();
   }
 
-   ngOnInit() {
-      console.log("OnInit Ran...");
-      this.loadIntents();
-      this.selectedMovie = this.movieService.getSelectedMovie();
+  ngOnInit() {
+    console.log("OnInit Ran...");
+    this.loadIntents();
+    this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
   ionViewDidEnter() {
@@ -56,7 +58,7 @@ export class HomePage {
 
   presentModal() {
     if (!this.modalShowing) {
-      this.modal = this.modalCtrl.create(MenuPage, {}, {showBackdrop: false});
+      this.modal = this.modalCtrl.create(MenuPage, {}, { showBackdrop: false });
       this.modal.onDidDismiss(() => this.modalShowing = false)
       this.modal.present();
       this.modalShowing = true;
@@ -64,33 +66,33 @@ export class HomePage {
   }
 
   startRecognition() {
-      this.platform.ready().then(() => {
+    this.platform.ready().then(() => {
 
-         this.recognition = new webkitSpeechRecognition();
-         //this.recognition = new SpeechRecognition();
-         this.recognition.lang = 'en-US';
-         this.recognition.onnomatch = (event => {
-            //this.showAlert('No match found.');
-         });
-         this.recognition.onerror = (event => {
-            //this.showAlert('Error happens.');
-         });
-         this.recognition.onresult = (event => {
-            if (event.results.length > 0) {
-                  console.log('Output STT: ', event.results[0][0].transcript);
-               this.ask(event.results[0][0].transcript);
-            }
-            this.stopRecognition();
-         });
-         this.recognition.start();
+      this.recognition = new webkitSpeechRecognition();
+      //this.recognition = new SpeechRecognition();
+      this.recognition.lang = 'en-US';
+      this.recognition.onnomatch = (event => {
+        //this.showAlert('No match found.');
       });
+      this.recognition.onerror = (event => {
+        //this.showAlert('Error happens.');
+      });
+      this.recognition.onresult = (event => {
+        if (event.results.length > 0) {
+          console.log('Output STT: ', event.results[0][0].transcript);
+          this.ask(event.results[0][0].transcript);
+        }
+        this.stopRecognition();
+      });
+      this.recognition.start();
+    });
   }
 
   stopRecognition() {
-      if (this.recognition) {
-        this.recognition.stop();
-        this.recognition = null;
-      }
+    if (this.recognition) {
+      this.recognition.stop();
+      this.recognition = null;
+    }
   }
 
   ask(text: any) {
@@ -117,12 +119,22 @@ export class HomePage {
     switch (event.key) {
       case "ArrowUp":
         this.startRecognition();
-        this.presentModal(); 
+        this.presentModal();
         this.analyzeImage();
+        this.m2e.postData(
+          {
+            "timestamp":  new Date().toISOString(),
+            "values": {
+              "cityName": "Atlanta",
+              "state": "Georgia",
+              "zip": 30303
+            }
+          }
+        ).subscribe();
         break;
 
       case "Escape":
-        this.navCtrl.pop({animation: "md-transition"});
+        this.navCtrl.pop({ animation: "md-transition" });
         break;
 
       default:
