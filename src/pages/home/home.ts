@@ -29,7 +29,6 @@ export class HomePage {
   public selectedMovie;
 
   constructor(
-<<<<<<< Updated upstream
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public platform: Platform,
@@ -41,19 +40,6 @@ export class HomePage {
     private m2e: M2EService
   ) {
     this.intents = new Map();
-=======
-              public navCtrl: NavController,
-              public modalCtrl: ModalController,
-              public platform: Platform,
-              public viewCtrl: ViewController,
-              private apiaiService:ApiaiService,
-              private bluemixService:BluemixService,
-              private cdRef:ChangeDetectorRef,
-              private movieService: MovieService
-              ) {
-      this.intents = new Map();
->>>>>>> Stashed changes
-
   }
 
   ngOnInit() {
@@ -114,7 +100,6 @@ export class HomePage {
   }
 
   ask(text: any) {
-<<<<<<< Updated upstream
     this.apiaiService.send(text).subscribe(response => {
       console.log(response);
       let page = this.intents.get(response.result.action);
@@ -126,19 +111,6 @@ export class HomePage {
     this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
       console.log(response);
     });
-=======
-     this.apiaiService.send(text).subscribe(response => {
-         console.log(response);
-         let page = this.intents.get(response.result.action);
-         if (page) {
-           this.goToPage(page);
-         }
-         this.modal.dismiss();
-      });
-      this.bluemixService.send('../../assets/images/lego_batman.jpg').subscribe(response => {
-         console.log(response);
-      });
->>>>>>> Stashed changes
   }
 
   handleKeyboardEvents(event) {
