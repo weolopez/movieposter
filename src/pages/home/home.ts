@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MenuPage } from '../menu/menu';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { BluemixService } from '../../app/services/bluemix.service';
@@ -34,7 +34,6 @@ export class HomePage {
               public viewCtrl: ViewController, 
               private apiaiService:ApiaiService, 
               private bluemixService:BluemixService, 
-              private cdRef:ChangeDetectorRef, 
               private movieService: MovieService
               ) {
       this.intents = new Map();
