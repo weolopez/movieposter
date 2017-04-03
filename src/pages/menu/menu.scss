@@ -4,30 +4,30 @@
     }
     .swiper-slide-next {
         .menu-item {
-            border: 3px solid rgb(76, 169, 12);
+            border: 3px solid rgb(0, 159, 219);
         }
     }
     .slide-zoom {
-        height: 100px;
+        height: 110px;
         background-color: rgba(255, 255, 255, 0.3);
         overflow: auto;
         .menu-item {
             position: relative;
-            width: 75%;
-            height: 90px;
+            height: 100px;
+            width: 120px;
             white-space: normal;
-            background-color: rgba(0, 0, 9, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             background-repeat: no-repeat;
             background-position-x: center;
-            background-position-y: 0px;
-            background-size: 60px;
-            text-transform: initial;
+            background-position-y: 8px;
+            background-size: 65px;
             span {
+                color: rgb(0, 159, 219);
                 position: absolute;
                 bottom: 5px;
                 left: 0;
                 right: 0;
-                font-size: 0.8em;
+                font-size: 0.5em;
                 height: initial;
             }
         }
