@@ -11,6 +11,7 @@ import { RatingsPage } from '../pages/ratings/ratings';
 import { TicketsPage } from '../pages/tickets/tickets';
 import { TrailerPage } from '../pages/trailer/trailer';
 import { ActorsPage } from '../pages/actors/actors';
+import { SpeakPage } from '../pages/speak/speak';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,6 +20,9 @@ import { MovieService } from './services/movie.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { M2EService } from "./services/m2e.service";
+import { ApiaiService } from './services/apiai.service';
+import { BluemixService } from './services/bluemix.service';
+import { AnalyticsService } from './services/analytics.service';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -39,12 +43,13 @@ export const firebaseConfig = {
     RatingsPage,
     TicketsPage,
     TrailerPage,
-    ActorsPage
+    ActorsPage,
+    SpeakPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig)
-   
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,13 +62,17 @@ export const firebaseConfig = {
     RatingsPage,
     TicketsPage,
     TrailerPage,
-    ActorsPage
+    ActorsPage,
+    SpeakPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     M2EService,
     MovieService,
+    ApiaiService,
+    BluemixService,
+    AnalyticsService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
