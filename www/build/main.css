@@ -24532,6 +24532,23 @@ ion-navbar.toolbar {
   overflow-y: auto;
 }
 
+ion-modal .toolbar-background {
+  background-color: #009fdb !important;
+}
+
+ion-modal .toolbar {
+  color: white;
+  text-align: center;
+}
+
+ion-modal .toolbar .toolbar-title {
+  color: white;
+}
+
+.modal-wrapper {
+  border-radius: 0.8em !important;
+}
+
 @media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {
   html {
     zoom: 1.75;
@@ -24706,4 +24723,15 @@ page-speak .pulse {
 
 page-trailer .trailer-page {
   background-color: black;
+}
+
+page-trailer .trailer-holder {
+  border-radius: 1em;
+  height: 65%;
+  width: 100%;
+  background-color: white;
+}
+
+page-trailer .trailer-holder .scroll-content {
+  overflow-y: hidden;
 }
