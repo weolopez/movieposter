@@ -20,6 +20,7 @@ import { MovieService } from './services/movie.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { M2EService } from "./services/m2e.service";
+import { PosterService } from "./services/poster.service";
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
@@ -69,6 +70,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     M2EService,
+    PosterService,
     MovieService,
     ApiaiService,
     BluemixService,
