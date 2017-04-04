@@ -24,6 +24,10 @@
     background: transparent;
 }
 
+.scroll-content {
+  overflow-y: auto;
+}
+
 @media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {
     html {
         zoom: 1.75;

@@ -5,6 +5,7 @@ import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
 import { TicketsPage } from '../tickets/tickets';
 import { TrailerPage } from '../trailer/trailer';
+import { SpeakPage } from '../speak/speak';
 
 @Component({
   selector: 'page-menu',
@@ -12,6 +13,7 @@ import { TrailerPage } from '../trailer/trailer';
 })
 
 export class MenuPage {
+
   @ViewChild('slides') slides: Slides;
   @ViewChild('slidesWrapper') slidesWrapper: ElementRef;
 
@@ -23,7 +25,7 @@ export class MenuPage {
     {
       title: "Speak",
       icon: "assets/images/svg/voiceCommandIco.svg",
-      buttonPage: ShowTimesPage,
+      buttonPage: SpeakPage,
       presentAs: "modal"
     },
     {
@@ -89,7 +91,7 @@ export class MenuPage {
     let self = this;
 
     function showModal() {
-        self.modal = self.modalController.create(page, {});
+        self.modal = self.modalController.create(page, {}, { showBackdrop: false });
         self.modal.onDidDismiss(() => self.modalShowing = false)
         self.modal.present();
         self.modalShowing = true;
