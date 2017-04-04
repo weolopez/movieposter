@@ -103,6 +103,16 @@ export class MenuPage {
     }
   }
 
+  itemSelected(itemIndex) {
+      let menuItem = this.menuItems[itemIndex];
+      let page = menuItem.buttonPage;
+      if (menuItem.presentAs == "page") {
+        this.gotoPage(page);
+      } else if (menuItem.presentAs == "modal") {
+        this.presentModal(page);
+      }
+
+  }
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
@@ -112,13 +122,8 @@ export class MenuPage {
       case "ArrowUp":
       let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next .menu-item');
       let menuItemIndex = activeButton.attributes["data-menu-item"].value;
-      let menuItem = this.menuItems[menuItemIndex];
-      let page = menuItem.buttonPage;
-      if (menuItem.presentAs == "page") {
-        this.gotoPage(page);
-      } else if (menuItem.presentAs == "modal") {
-        this.presentModal(page);
-      }
+      this.itemSelected(menuItemIndex);
+      break;
 
       default:
       break;
