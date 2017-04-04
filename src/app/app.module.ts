@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { Storage } from '@ionic/storage';
 
 import { MoviesPage } from '../pages/movies/movies';
 import { HomePage } from '../pages/home/home';
@@ -69,6 +70,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    Storage,
     M2EService,
     PosterService,
     MovieService,
