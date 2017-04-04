@@ -65,8 +65,9 @@ export class HomePage {
   {
      //get image- will this be in firebase?
       this.bluemixService.send('images/samples/2.jpg').subscribe(response => {
-         console.log(response.images[0]);
-         this.analytics.addBluemix(response.images[0]);
+         console.log(response);
+         //console.log(response.images[0]);
+         //this.analytics.addBluemix(response.images[0]);
       });
   }
 

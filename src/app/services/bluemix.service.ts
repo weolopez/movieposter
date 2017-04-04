@@ -13,7 +13,12 @@ export class BluemixService{
     constructor(http: Http) {
         this.http = http;
         //this.apiKey = 'cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0';
-        this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        //classify
+        //this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        
+        //detect_faces
+        this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/detect_faces?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        
         //running server locally to debug
         //this.baseUrl = "http://localhost:3000/api/classify";
         
