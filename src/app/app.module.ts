@@ -19,6 +19,7 @@ import { MovieService } from './services/movie.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { M2EService } from "./services/m2e.service";
+import { PosterService } from "./services/poster.service";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -63,6 +64,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     M2EService,
+    PosterService,
     MovieService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
