@@ -127,7 +127,7 @@ export class HomePage {
       case "ArrowUp":
         this.startRecognition();
         this.presentModal();
-        this.analyzeImage();
+        //this.analyzeImage();
         this.m2e.postData(
           {
             "timestamp":  new Date().toISOString(),

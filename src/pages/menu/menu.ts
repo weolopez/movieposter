@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, ViewController, Platform, Slides } from 'ionic-angular';
+import { NavController, ViewController, Platform, Slides, ModalController, Modal } from 'ionic-angular';
 import { ShowTimesPage } from '../showtimes/showtimes';
 import { ImdbPage } from '../imdb/imdb';
 import { RatingsPage } from '../ratings/ratings';
@@ -16,45 +16,54 @@ export class MenuPage {
   @ViewChild('slidesWrapper') slidesWrapper: ElementRef;
 
   private unregisterKeyboardListener;
+  private modal: Modal;
+  private modalShowing: Boolean;
 
   menuItems = [
     {
       title: "Speak",
       icon: "assets/images/svg/voiceCommandIco.svg",
-      buttonPage: ShowTimesPage
+      buttonPage: ShowTimesPage,
+      presentAs: "modal"
     },
     {
       title: "Show Times",
       icon: "assets/images/svg/showTimesIco.svg",
-      buttonPage: ShowTimesPage
+      buttonPage: ShowTimesPage,
+      presentAs: "modal"
     },
     {
       title: "Purchase Tickets",
       icon: "assets/images/svg/ticketsIco.svg",
-      buttonPage: TicketsPage
+      buttonPage: TicketsPage,
+      presentAs: "modal"
     },
     {
       title: "View IMDB",
       icon: "assets/images/svg/imdbIco.svg",
       buttonPage: ImdbPage,
+      presentAs: "modal"
     },
     {
       title: "View Trailer",
       icon: "assets/images/svg/trailerIco.svg",
       buttonPage: TrailerPage,
+      presentAs: "modal"
     },
     {
       title: "View Ratings",
       icon: "assets/images/svg/ratingsIco.svg",
       buttonPage: RatingsPage,
+      presentAs: "modal"
     },
   ];
 
-  constructor(
+  constructor (
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public platform: Platform,
-    private element: ElementRef
+    private element: ElementRef,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -76,6 +85,24 @@ export class MenuPage {
     }
   }
 
+  presentModal(page) {
+    let self = this;
+
+    function showModal() {
+        self.modal = self.modalController.create(page, {});
+        self.modal.onDidDismiss(() => self.modalShowing = false)
+        self.modal.present();
+        self.modalShowing = true;
+    }
+    if (this.modalShowing) {
+      this.modal.dismiss().then((res) => {
+        showModal();
+      });
+    } else {
+        showModal();
+    }
+  }
+
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
@@ -84,9 +111,14 @@ export class MenuPage {
 
       case "ArrowUp":
       let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next .menu-item');
-      let menuItem = activeButton.attributes["data-menu-item"].value;
-      let page = this.menuItems[menuItem].buttonPage;
-      this.gotoPage(page);
+      let menuItemIndex = activeButton.attributes["data-menu-item"].value;
+      let menuItem = this.menuItems[menuItemIndex];
+      let page = menuItem.buttonPage;
+      if (menuItem.presentAs == "page") {
+        this.gotoPage(page);
+      } else if (menuItem.presentAs == "modal") {
+        this.presentModal(page);
+      }
 
       default:
       break;
