@@ -24528,6 +24528,16 @@ ion-navbar.toolbar {
   background: transparent;
 }
 
+.scroll-content {
+  overflow-y: auto;
+}
+
+@media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {
+  html {
+    zoom: 1.75;
+  }
+}
+
 .menu-page .menu-item {
   border-radius: 10px;
 }
@@ -24579,6 +24589,119 @@ ion-navbar.toolbar {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (min-height: 600px) and (min-width: 768px) {
+  .md .modal-wrapper {
+    box-shadow: none;
+  }
+}
+
+page-speak ion-content {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 48px;
+}
+
+page-speak .listening-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 75%;
+  background-image: url(../assets/images/svg/hearingIco.svg);
+}
+
+page-speak .listening-text {
+  text-align: center;
+  font-size: 4em;
+  color: white;
+}
+
+@-webkit-keyframes pulse_animation {
+  0% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+  20% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  40% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1.0;
+  }
+  60% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  80% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse_animation {
+  0% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+  20% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  40% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1.0;
+  }
+  60% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  80% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+}
+
+page-speak .pulse {
+  -webkit-animation-name: pulse_animation;
+  animation-name: pulse_animation;
+  -webkit-animation-duration: 1200ms;
+  animation-duration: 1200ms;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 page-trailer .trailer-page {

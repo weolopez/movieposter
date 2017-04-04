@@ -8,6 +8,7 @@ import { MoviesPage } from '../pages/movies/movies';
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
+import { PosterService } from "./services/poster.service";
 
 
 
@@ -19,7 +20,11 @@ import { AnalyticsService } from './services/analytics.service';
 export class MyApp {
   rootPage:any = MoviesPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, 
+              statusBar: StatusBar, 
+              splashScreen: SplashScreen,
+              posterService: PosterService
+              ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
