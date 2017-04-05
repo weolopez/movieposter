@@ -13,18 +13,18 @@
 
         <div class="rating">
             <div class="rating-icon" style="background-image: url(assets/images/svg/rottenTomatoes.svg)"></div>
-            <div class="rating-name">Rotten Tomatoes</div>
-            <div class="rating-value">71%</div>
+            <div class="rating-name">{{selectedMovie.ratings.rottenTomatoes.name}}</div>
+            <div class="rating-value">{{selectedMovie.ratings.rottenTomatoes.rating}}</div>
         </div>
         <div class="rating" style="border-left:1px solid silver; border-right:1px solid silver">
             <div class="rating-icon" style="background-image: url(assets/images/svg/imdb_logo.svg)"></div>
-            <div class="rating-name">Internet Movie Database</div>
-            <div class="rating-value">8/10</div>
+            <div class="rating-name">{{selectedMovie.ratings.imdb.name}}</div>
+            <div class="rating-value">{{selectedMovie.ratings.imdb.rating}}</div>
         </div>
         <div class="rating">
             <div class="rating-icon" style="background-image: url(assets/images/svg/commonSenseLogo.svg)"></div>
-            <div class="rating-name">Common Sense Media</div>
-            <div class="rating-value">4/5</div>
+            <div class="rating-name">{{selectedMovie.ratings.commonSenseMedia.name}}</div>
+            <div class="rating-value">{{selectedMovie.ratings.commonSenseMedia.rating}}</div>
         </div>
     </div>
 
