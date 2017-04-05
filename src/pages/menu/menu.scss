@@ -38,6 +38,66 @@
     .slides-wrapper {
         height: 100%;
     }
+    .listening-container {
+        position: absolute;
+        width: 100%;
+        height: 6em;
+        top: 6em;
+        right: 2em;
+        text-align: right;
+        .listening-icon {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 6em;
+            height: 6em;
+            background-image: url(../assets/images/svg/hearingIco.svg);
+            float: right;
+            clear: both;
+        }
+        .listening-text {
+            text-align: right;
+            font-size: 2em;
+            color: white;
+            clear: both;
+        }
+    }
+    @keyframes pulse_animation {
+        0% {
+            transform: scale(0.91);
+            opacity: 0.7;
+        }
+        20% {
+            transform: scale(0.93);
+            opacity: 0.8;
+        }
+        40% {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+        50% {
+            transform: scale(1);
+            opacity: 1.0;
+        }
+        60% {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+        80% {
+            transform: scale(0.93);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(0.91);
+            opacity: 0.7;
+        }
+    }
+    .pulse {
+        animation-name: pulse_animation;
+        animation-duration: 1200ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
 }
 
 .modal-wrapper.full-screen {
@@ -50,7 +110,7 @@
 }
 
 @media only screen and (min-height: 600px) and (min-width: 768px) {
-  .md .modal-wrapper {
-      box-shadow: none;
-  }
+    .md .modal-wrapper {
+        box-shadow: none;
+    }
 }

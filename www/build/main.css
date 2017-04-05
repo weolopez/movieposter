@@ -24549,10 +24549,91 @@ ion-modal .toolbar .toolbar-title {
   border-radius: 0.8em !important;
 }
 
+.mp-title-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  background-position-y: 4px;
+  background-repeat: no-repeat;
+}
+
 @media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {
   html {
     zoom: 1.75;
   }
+}
+
+page-imdb h5 {
+  font-size: 1.1em;
+}
+
+page-imdb hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+page-imdb .movie-header {
+  font-size: 1.5em;
+}
+
+page-imdb .slide-zoom {
+  height: 220px;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: auto;
+  margin: auto;
+  overflow: hidden;
+}
+
+page-imdb .slide-zoom .cast-member {
+  text-align: left;
+  border: 1px solid silver;
+  width: 90px;
+  height: 100%;
+}
+
+page-imdb .slide-zoom .cast-member .cast-member-name {
+  padding: 2px 5px 2px 5px;
+  font-weight: bold;
+  font-size: 0.6em;
+}
+
+page-imdb .slide-zoom .cast-member .cast-member-character {
+  padding: 2px 5px 2px 5px;
+  font-size: 0.6em;
+}
+
+page-imdb .slide-zoom .avatar {
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+page-imdb .slide-zoom .menu-item {
+  position: relative;
+  margin: auto;
+  height: 180px;
+  width: 90px;
+  white-space: normal;
+}
+
+page-imdb .slide-zoom .menu-item span {
+  color: #009fdb;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  font-size: 0.5em;
+  height: initial;
+}
+
+page-imdb .slide-zoom .scroll-content {
+  overflow-y: hidden;
+}
+
+page-imdb .slide-zoom .slides-wrapper {
+  height: 100%;
 }
 
 .menu-page .menu-item {
@@ -24599,39 +24680,31 @@ ion-modal .toolbar .toolbar-title {
   height: 100%;
 }
 
-.modal-wrapper.full-screen {
+.menu-page .listening-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
   width: 100%;
-  height: 100%;
+  height: 6em;
+  top: 6em;
+  right: 2em;
+  text-align: right;
 }
 
-@media only screen and (min-height: 600px) and (min-width: 768px) {
-  .md .modal-wrapper {
-    box-shadow: none;
-  }
-}
-
-page-speak ion-content {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  border-radius: 48px;
-}
-
-page-speak .listening-icon {
+.menu-page .listening-container .listening-icon {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  width: 100%;
-  height: 75%;
+  width: 6em;
+  height: 6em;
   background-image: url(../assets/images/svg/hearingIco.svg);
+  float: right;
+  clear: both;
 }
 
-page-speak .listening-text {
-  text-align: center;
-  font-size: 4em;
+.menu-page .listening-container .listening-text {
+  text-align: right;
+  font-size: 2em;
   color: white;
+  clear: both;
 }
 
 @-webkit-keyframes pulse_animation {
@@ -24670,6 +24743,90 @@ page-speak .listening-text {
     transform: scale(0.91);
     opacity: 0.7;
   }
+}
+
+@keyframes pulse_animation {
+  0% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+  20% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  40% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1.0;
+  }
+  60% {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+  80% {
+    -webkit-transform: scale(0.93);
+    transform: scale(0.93);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    opacity: 0.7;
+  }
+}
+
+.menu-page .pulse {
+  -webkit-animation-name: pulse_animation;
+  animation-name: pulse_animation;
+  -webkit-animation-duration: 1200ms;
+  animation-duration: 1200ms;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.modal-wrapper.full-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-height: 600px) and (min-width: 768px) {
+  .md .modal-wrapper {
+    box-shadow: none;
+  }
+}
+
+page-speak ion-content {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 48px;
+}
+
+page-speak .listening-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 75%;
+  background-image: url(../assets/images/svg/hearingIco.svg);
+}
+
+page-speak .listening-text {
+  text-align: center;
+  font-size: 4em;
+  color: white;
 }
 
 @keyframes pulse_animation {

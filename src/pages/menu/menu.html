@@ -1,4 +1,14 @@
 <ion-content class="menu-page">
+
+    <div class="listening-container">
+        <div class="listening-icon pulse">
+        </div>
+
+        <div class="listening-text">
+            {{listeningText}}
+        </div>
+    </div>
+
     <div #slidesWrapper class="slides-wrapper">
         <ion-slides #slides slidesPerView="3" loop>
             <ion-slide *ngFor="let slide of menuItems; let i=index">
