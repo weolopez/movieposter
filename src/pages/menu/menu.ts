@@ -55,14 +55,27 @@ export class MenuPage {
   }
 
   ionViewDidEnter() {
+    this.startListeningToKeyboard();
     this.initializeListeningText();
     this.startRecognition();
-    this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
   }
 
   ionViewDidLeave() {
-    this.unregisterKeyboardListener();
+    this.stopListeningToKeyboard();
     this.stopRecognition();
+  }
+
+  startListeningToKeyboard() {
+    this.stopListeningToKeyboard();
+    this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
+    //this.slides.enableKeyboardControl(true);
+  }
+
+  stopListeningToKeyboard() {
+    if (this.unregisterKeyboardListener) {
+      this.unregisterKeyboardListener();
+    }
+    //this.slides.enableKeyboardControl(false);
   }
 
   gotoPage(page) {
@@ -75,8 +88,12 @@ export class MenuPage {
     let self = this;
 
     function showModal() {
+        self.stopListeningToKeyboard();
         self.modal = self.modalController.create(page, {}, { showBackdrop: false });
-        self.modal.onDidDismiss(() => self.modalShowing = false)
+        self.modal.onDidDismiss(() => {
+          self.startListeningToKeyboard();
+          self.modalShowing = false
+        })
         self.modal.present();
         self.modalShowing = true;
     }

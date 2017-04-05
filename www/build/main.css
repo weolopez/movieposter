@@ -24848,10 +24848,24 @@ page-ratings .rating .rating-value {
 }
 
 page-ratings .critic-review {
-  width: 100%;
+  width: 90%;
   height: 10em;
   text-align: left;
   font-size: .8em;
+  margin: auto;
+}
+
+page-ratings .critic-review .review-text {
+  margin-bottom: 10px;
+  overflow-y: auto;
+}
+
+page-ratings .critic-review .review-name {
+  font-size: 0.7em;
+}
+
+page-ratings .critic-review .review-company {
+  font-size: 0.6em;
 }
 
 page-speak ion-content {

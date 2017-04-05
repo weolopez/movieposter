@@ -31,11 +31,13 @@
     <hr>
 
     <div class="movie-synopsis">
-        <h5>Synopsis</h5>
+        <h5>Critic Reviews</h5>
         <ion-slides #slides slidesPerView="1" loop pager>
-            <ion-slide *ngFor="let actor of selectedMovie.cast; let i=index">
+            <ion-slide *ngFor="let review of selectedMovie.criticReviews; let i=index">
                 <div class="critic-review">
-                    This is a great movie
+                    <div class="review-text">{{review.text}}</div>
+                    <div class="review-name">{{review.name}}</div>
+                    <div class="review-company">{{review.company}}</div>
                 </div>
             </ion-slide>
         </ion-slides>

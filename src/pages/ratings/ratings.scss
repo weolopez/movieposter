@@ -29,9 +29,20 @@ page-ratings {
         }
     }
     .critic-review {
-        width: 100%;
+        width: 90%;
         height: 10em;
         text-align: left;
         font-size: .8em;
+        margin: auto;
+        .review-text {
+            margin-bottom: 10px;
+            overflow-y: auto;
+        }
+        .review-name {
+            font-size: 0.7em;
+        }
+        .review-company {
+            font-size: 0.6em;
+        }
     }
 }
