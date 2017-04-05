@@ -1,14 +1,20 @@
 <ion-header>
     <ion-navbar hideBackButton>
-        <ion-title>Show Times</ion-title>
+        <ion-title><span class="mp-title-icon" style="background-image: url(assets/images/svg/showTimesIco.white.svg); background-position-y: 0.1em;"></span>ShowTimes</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <div class="movie-header">{{selectedMovie.title}}, Show Times {{selectedMovie.year}}</div>
 
-    <div text-center>
+    <hr>
+
+    <div class="movie-ratings">
+
     </div>
+    <hr>
 
-    <p>Show Times</p>
+    <div class="movie-synopsis">
+    </div>
 
 </ion-content>

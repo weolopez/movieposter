@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, Platform } from 'ionic-angular';
+import { MovieService } from '../../app/services/movie.service';
 
 @Component({
   selector: 'page-showtimes',
@@ -9,12 +10,20 @@ import { NavController, Platform } from 'ionic-angular';
 
 export class ShowTimesPage {
   private unregisterKeyboardListener;
+  public selectedMovie = {};
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
-
+  constructor(
+    public navCtrl: NavController,
+    public platform: Platform,
+    public movieService: MovieService
+  ) {
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
+        this.selectedMovie = this.movieService.getSelectedMovie();
+  }
+
+ ionViewDidLoad() {
   }
 
   ionViewDidEnter() {
