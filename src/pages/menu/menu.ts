@@ -188,13 +188,13 @@ export class MenuPage {
   }
 
   loadIntents() {
-    this.intents.set('show-schedule', 1);
-    this.intents.set('show-tickets', 2);
-    this.intents.set('show-imdb', 3);
-    this.intents.set('show-trailer', 4);
-    this.intents.set('show-review', 5);
-    this.intents.set('input.unknown', 4);
-    this.intents.set('smalltalk.greetings', 5);
+    this.intents.set('show-schedule', 0);
+    this.intents.set('show-tickets', 1);
+    this.intents.set('show-imdb', 2);
+    this.intents.set('show-trailer', 3);
+    this.intents.set('show-review', 4);
+    this.intents.set('input.unknown', 3);
+    this.intents.set('smalltalk.greetings', 4);
   }
 
   getMenuItems() {

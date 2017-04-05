@@ -77,7 +77,11 @@ export class HomePage {
               "zip": 30303
             }
           }
-        ).subscribe();
+        ).subscribe((result) => {
+          console.log(result);
+        }, (error) => {
+          console.log(error);
+        });
         break;
 
       case "Escape":
