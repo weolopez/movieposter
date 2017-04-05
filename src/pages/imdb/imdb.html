@@ -18,12 +18,19 @@
 
     <div class="movie-cast">
         <h5>Cast</h5>
-        <ion-slides #slides slidesPerView="5">
+        <ion-slides #slides slidesPerView="5" loop pager>
             <ion-slide *ngFor="let actor of selectedMovie.cast; let i=index">
-                <div class="menu-item" [attr.data-menu-item]="i" [style.backgroundImage]="'url(' + actor.avatarUrl + ')'">{{actor.name}}</div>
+                <div class="menu-item">
+                    <div class="cast-member">
+                        <div class="avatar" [attr.data-menu-item]="i" [style.backgroundImage]="'url(' + actor.avatarUrl + ')'"></div>
+                        <div class="cast-member-description">
+                            <div class="cast-member-name">{{actor.name}}</div>
+                            <div class="cast-member-character">{{actor.character}}</div>
+                        </div>
+                    </div>
+                </div>
             </ion-slide>
         </ion-slides>
-
     </div>
 
 </ion-content>

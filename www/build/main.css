@@ -24572,24 +24572,50 @@ page-imdb hr {
   margin-bottom: 1em;
 }
 
+page-imdb .movie-header {
+  font-size: 1.5em;
+}
+
 page-imdb .slide-zoom {
-  height: 110px;
+  height: 220px;
   background-color: rgba(255, 255, 255, 0.3);
   overflow: auto;
   margin: auto;
+  overflow: hidden;
+}
+
+page-imdb .slide-zoom .cast-member {
+  text-align: left;
+  border: 1px solid silver;
+  width: 90px;
+  height: 100%;
+}
+
+page-imdb .slide-zoom .cast-member .cast-member-name {
+  padding: 2px 5px 2px 5px;
+  font-weight: bold;
+  font-size: 0.6em;
+}
+
+page-imdb .slide-zoom .cast-member .cast-member-character {
+  padding: 2px 5px 2px 5px;
+  font-size: 0.6em;
+}
+
+page-imdb .slide-zoom .avatar {
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 page-imdb .slide-zoom .menu-item {
   position: relative;
   margin: auto;
-  height: 100px;
-  width: 80px;
+  height: 180px;
+  width: 90px;
   white-space: normal;
-  background-color: rgba(0, 0, 0, 0.8);
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 8px;
-  background-size: contain;
 }
 
 page-imdb .slide-zoom .menu-item span {
@@ -24600,6 +24626,14 @@ page-imdb .slide-zoom .menu-item span {
   right: 0;
   font-size: 0.5em;
   height: initial;
+}
+
+page-imdb .slide-zoom .scroll-content {
+  overflow-y: hidden;
+}
+
+page-imdb .slide-zoom .slides-wrapper {
+  height: 100%;
 }
 
 .menu-page .menu-item {
