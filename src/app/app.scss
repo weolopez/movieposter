@@ -25,7 +25,24 @@
 }
 
 .scroll-content {
-  overflow-y: auto;
+    overflow-y: auto;
+}
+
+ion-modal {
+    .toolbar-background {
+        background-color: rgb(0, 159, 219) !important;
+    }
+    .toolbar {
+        color: white;
+        text-align: center;
+        .toolbar-title {
+            color: white;
+        }
+    }
+}
+
+.modal-wrapper {
+    border-radius: 0.8em !important;
 }
 
 @media (min-width: 1200px) and (max-width: 1200px) and (min-height: 1920px) and (max-height: 1920px) {

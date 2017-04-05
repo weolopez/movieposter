@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MoviesPage } from '../pages/movies/movies';
+import { HomePage } from '../pages/home/home';
 
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
@@ -18,7 +18,7 @@ import { PosterService } from "./services/poster.service";
 })
 
 export class MyApp {
-  rootPage:any = MoviesPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, 
               statusBar: StatusBar, 

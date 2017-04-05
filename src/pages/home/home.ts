@@ -19,7 +19,7 @@ export class HomePage {
   private modalShowing: Boolean;
   private unregisterKeyboardListener;
 
-  public selectedMovie;
+  public selectedMovie = {};
 
   constructor(
     public navCtrl: NavController,
@@ -37,7 +37,10 @@ export class HomePage {
 
   ngOnInit() {
     console.log("OnInit Ran...");
-    this.selectedMovie = this.movieService.getSelectedMovie();
+    this.movieService.getMovies().subscribe(response => {
+      this.movieService.setSelectedMovie(response.movie);
+      this.selectedMovie = this.movieService.getSelectedMovie();
+    });
   }
 
   ionViewDidEnter() {
