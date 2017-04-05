@@ -1,11 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, ViewController, Platform, Slides, ModalController, Modal } from 'ionic-angular';
-import { ShowTimesPage } from '../showtimes/showtimes';
-import { ImdbPage } from '../imdb/imdb';
-import { RatingsPage } from '../ratings/ratings';
-import { TicketsPage } from '../tickets/tickets';
-import { TrailerPage } from '../trailer/trailer';
-import { SpeakPage } from '../speak/speak';
+
+import { ShowTimesPage } from '../../pages/showtimes/showtimes';
+import { ImdbPage } from '../../pages/imdb/imdb';
+import { RatingsPage } from '../../pages/ratings/ratings';
+import { TicketsPage } from '../../pages/tickets/tickets';
+import { TrailerPage } from '../../pages/trailer/trailer';
+import { SpeakPage } from '../../pages/speak/speak';
 
 @Component({
   selector: 'page-menu',
@@ -21,44 +22,7 @@ export class MenuPage {
   private modal: Modal;
   private modalShowing: Boolean;
 
-  menuItems = [
-    {
-      title: "Speak",
-      icon: "assets/images/svg/voiceCommandIco.svg",
-      buttonPage: SpeakPage,
-      presentAs: "modal"
-    },
-    {
-      title: "Show Times",
-      icon: "assets/images/svg/showTimesIco.svg",
-      buttonPage: ShowTimesPage,
-      presentAs: "modal"
-    },
-    {
-      title: "Purchase Tickets",
-      icon: "assets/images/svg/ticketsIco.svg",
-      buttonPage: TicketsPage,
-      presentAs: "modal"
-    },
-    {
-      title: "View IMDB",
-      icon: "assets/images/svg/imdbIco.svg",
-      buttonPage: ImdbPage,
-      presentAs: "modal"
-    },
-    {
-      title: "View Trailer",
-      icon: "assets/images/svg/trailerIco.svg",
-      buttonPage: TrailerPage,
-      presentAs: "modal"
-    },
-    {
-      title: "View Ratings",
-      icon: "assets/images/svg/ratingsIco.svg",
-      buttonPage: RatingsPage,
-      presentAs: "modal"
-    },
-  ];
+  private menuItems;
 
   constructor (
     public navCtrl: NavController,
@@ -69,6 +33,7 @@ export class MenuPage {
   ) { }
 
   ngOnInit() {
+    this.menuItems = this.getMenuItems();
     // Make the modal full screen
     this.element.nativeElement.parentNode.classList.add("full-screen");
   }
@@ -115,6 +80,7 @@ export class MenuPage {
       }
 
   }
+
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
@@ -130,6 +96,46 @@ export class MenuPage {
       default:
       break;
     }
+  }
+
+  getMenuItems() {
+    return  [{
+                  title: "Speak",
+                  icon: "assets/images/svg/voiceCommandIco.svg",
+                  buttonPage: SpeakPage,
+                  presentAs: "modal"
+              },
+              {
+                  title: "Show Times",
+                  icon: "assets/images/svg/showTimesIco.svg",
+                  buttonPage: ShowTimesPage,
+                  presentAs: "modal"
+              },
+              {
+                  title: "Purchase Tickets",
+                  icon: "assets/images/svg/ticketsIco.svg",
+                  buttonPage: TicketsPage,
+                  presentAs: "modal"
+              },
+              {
+                  title: "Info",
+                  icon: "assets/images/svg/aboutIco.svg",
+                  buttonPage: ImdbPage,
+                  presentAs: "modal"
+              },
+              {
+                  title: "View Trailer",
+                  icon: "assets/images/svg/trailerIco.svg",
+                  buttonPage: TrailerPage,
+                  presentAs: "modal"
+              },
+              {
+                  title: "View Ratings",
+                  icon: "assets/images/svg/ratingsIco.svg",
+                  buttonPage: RatingsPage,
+                  presentAs: "modal"
+              }
+          ];
   }
 
 }

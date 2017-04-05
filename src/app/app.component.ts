@@ -20,8 +20,8 @@ import { PosterService } from "./services/poster.service";
 export class MyApp {
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, 
-              statusBar: StatusBar, 
+  constructor(platform: Platform,
+              statusBar: StatusBar,
               splashScreen: SplashScreen,
               posterService: PosterService
               ) {
