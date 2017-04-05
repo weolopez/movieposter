@@ -25,6 +25,7 @@ import { PosterService } from "./services/poster.service";
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
+import { FacesService } from "./services/faces.service";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -77,6 +78,7 @@ export const firebaseConfig = {
     ApiaiService,
     BluemixService,
     AnalyticsService,
+    FacesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

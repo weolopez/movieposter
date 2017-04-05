@@ -13,22 +13,27 @@ export class BluemixService{
     constructor(http: Http) {
         this.http = http;
         //this.apiKey = 'cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0';
-        this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        //classify
+        //this.baseUrl = "http://visual-recognition-bh.mybluemix.net/api/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-20";
+        this.baseUrl=  "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&version=2016-05-19"
+      
         //running server locally to debug
         //this.baseUrl = "http://localhost:3000/api/classify";
         
-       
+       //https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=cc1de17e9bbfb93b8e9df6186f69c2f58ace85f0&url=https://github.com/watson-developer-cloud/doc-tutorial-downloads/raw/master/visual-recognition/fruitbowl.jpg&version=2016-05-19
 }
 
    
 
     send(pic: any) {
-        let body = 'url=' + pic;
+
+        //&url=https://github.com/watson-developer-cloud/doc-tutorial-downloads/raw/master/visual-recognition/fruitbowl.jpg
+        let query = '&url=' + pic;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
 
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.baseUrl, body, options)
+        return this.http.get(this.baseUrl + query, options)
             .map(res => res.json())
             .catch(this.handleError);
     }
