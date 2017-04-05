@@ -26,6 +26,7 @@ export class MenuPage {
   private unregisterKeyboardListener;
   private modal: Modal;
   private modalShowing: Boolean;
+  private isListening: Boolean;
 
   private recognition: any;
   private intents: any;
@@ -138,6 +139,15 @@ export class MenuPage {
     this.platform.ready().then(() => {
 
       this.recognition = new webkitSpeechRecognition();
+      this.recognition.continuous = true;
+      this.recognition.onstart = (event => {
+        this.isListening = true;
+        this.changeDetector.detectChanges();
+      });
+      this.recognition.onend = (event => {
+        this.isListening = false;
+        this.changeDetector.detectChanges();
+      });
       //this.recognition = new SpeechRecognition();
       this.recognition.lang = 'en-US';
       this.recognition.onnomatch = (event => {
@@ -172,12 +182,17 @@ export class MenuPage {
          console.log(response);
          let page = this.intents.get(response.result.action);
          this.analytics.addSpeech(text,response.result.action );
-         if (page) {
+         if (null!=page) {
             this.listeningText = response.result.speech;
             this.changeDetector.detectChanges();
             setTimeout(() => {
               this.itemSelected(page)
               this.initializeListeningText();
+            }, 1000);
+         } else {
+            setTimeout(() => {
+              this.initializeListeningText();
+              this.startRecognition();
             }, 1000);
          }
      });
@@ -193,7 +208,7 @@ export class MenuPage {
     this.intents.set('show-imdb', 2);
     this.intents.set('show-trailer', 3);
     this.intents.set('show-review', 4);
-    this.intents.set('input.unknown', 3);
+    this.intents.set('input.unknown', null);
     this.intents.set('smalltalk.greetings', 4);
   }
 
