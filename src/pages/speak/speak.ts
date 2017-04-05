@@ -96,7 +96,7 @@ export class SpeakPage {
      this.apiaiService.send(text).subscribe(response => {
          console.log(response);
          let page = this.intents.get(response.result.action);
-         this.analytics.addSpeech(text,response.result.action );
+         this.analytics.addSpeech(text, response.result.action );
          if (page) {
             this.listeningText = response.result.speech;
             setTimeout(() => {

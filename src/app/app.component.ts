@@ -9,12 +9,13 @@ import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
 import { PosterService } from "./services/poster.service";
+import { FacesService } from "./services/faces.service";
 
 
 
 @Component({
   templateUrl: 'app.html',
-  providers: [ApiaiService, BluemixService, AnalyticsService]
+  providers: [ApiaiService, BluemixService, AnalyticsService,FacesService]
 })
 
 export class MyApp {
