@@ -14,7 +14,7 @@ export class AnalyticsService{
     speechList: FirebaseListObservable<any>;
     identities: FirebaseListObservable<any>;
     private images : any;
-  
+
 
   constructor(private af: AngularFire, private poster: PosterService, private faces: FacesService, private bluemixService: BluemixService) {
     //this.posterid = poster.getPosterID;
@@ -59,13 +59,17 @@ export class AnalyticsService{
       let my_image = this.images[index].url;
 
       this.bluemixService.send(my_image).subscribe(response => {
-         //console.log(response);
-         console.log(response.images[0]);
-         this.addBluemix(response.images[0]);
+        //console.log(response);
+        if (response.images) {
+          console.log(response.images[0]);
+          this.addBluemix(response.images[0]);
+        }
       });
       this.faces.send(my_image).subscribe(response => {
-         console.log(response.images[0].faces);
-         this.addIdentities(response.images[0].faces);
+        if (response.images) {
+          console.log(response.images[0].faces);
+          this.addIdentities(response.images[0].faces);
+        }
       });
       //TODO
       //check if identity is in KnownIdentities
@@ -83,6 +87,6 @@ export class AnalyticsService{
     console.log(this.images);
 }
 
- 
+
 
 }

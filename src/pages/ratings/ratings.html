@@ -1,14 +1,44 @@
 <ion-header>
     <ion-navbar hideBackButton>
-        <ion-title>Ratings</ion-title>
+        <ion-title><span class="mp-title-icon" style="background-image: url(assets/images/svg/ratingsIco.white.svg); background-position-y: 0.4em;"></span>Ratings</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <div class="movie-header">{{selectedMovie.title}}, Reviews {{selectedMovie.year}}</div>
 
-    <div text-center>
+    <hr>
+
+    <div class="movie-ratings">
+
+        <div class="rating">
+            <div class="rating-icon" style="background-image: url(assets/images/svg/rottenTomatoes.svg)"></div>
+            <div class="rating-name">Rotten Tomatoes</div>
+            <div class="rating-value">71%</div>
+        </div>
+        <div class="rating" style="border-left:1px solid silver; border-right:1px solid silver">
+            <div class="rating-icon" style="background-image: url(assets/images/svg/imdb_logo.svg)"></div>
+            <div class="rating-name">Internet Movie Database</div>
+            <div class="rating-value">8/10</div>
+        </div>
+        <div class="rating">
+            <div class="rating-icon" style="background-image: url(assets/images/svg/commonSenseLogo.svg)"></div>
+            <div class="rating-name">Common Sense Media</div>
+            <div class="rating-value">4/5</div>
+        </div>
     </div>
 
-    <p>Ratings</p>
+    <hr>
+
+    <div class="movie-synopsis">
+        <h5>Synopsis</h5>
+        <ion-slides #slides slidesPerView="1" loop pager>
+            <ion-slide *ngFor="let actor of selectedMovie.cast; let i=index">
+                <div class="critic-review">
+                    This is a great movie
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
 
 </ion-content>

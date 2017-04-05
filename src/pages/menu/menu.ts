@@ -181,12 +181,7 @@ export class MenuPage {
   }
 
   getMenuItems() {
-    return  [{
-                  title: "Speak",
-                  icon: "assets/images/svg/voiceCommandIco.svg",
-                  buttonPage: SpeakPage,
-                  presentAs: "modal"
-              },
+    return  [
               {
                   title: "Show Times",
                   icon: "assets/images/svg/showTimesIco.svg",

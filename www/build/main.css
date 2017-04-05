@@ -24553,7 +24553,9 @@ ion-modal .toolbar .toolbar-title {
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
-  background-position-y: 4px;
+  margin-left: -0.4em;
+  margin-right: 0.3em;
+  background-position-y: 0.15em;
   background-repeat: no-repeat;
 }
 
@@ -24807,6 +24809,49 @@ page-imdb .slide-zoom .slides-wrapper {
   .md .modal-wrapper {
     box-shadow: none;
   }
+}
+
+page-ratings h5 {
+  font-size: 1.1em;
+}
+
+page-ratings hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+page-ratings .movie-header {
+  font-size: 1.5em;
+}
+
+page-ratings .rating {
+  display: inline-block;
+  width: 32%;
+  text-align: center;
+}
+
+page-ratings .rating .rating-icon {
+  height: 4em;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+page-ratings .rating .rating-name {
+  font-weight: bold;
+  margin: 0.2em;
+}
+
+page-ratings .rating .rating-value {
+  font-size: 1.6em;
+}
+
+page-ratings .critic-review {
+  width: 100%;
+  height: 10em;
+  text-align: left;
+  font-size: .8em;
 }
 
 page-speak ion-content {
