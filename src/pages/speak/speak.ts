@@ -121,7 +121,7 @@ export class SpeakPage {
   loadIntents() {
     this.intents.set('show-schedule', 1);
     this.intents.set('show-tickets', 2);
-    this.intents.set('show-imdb', 3);
+    this.intents.set('show-info', 3);
     this.intents.set('show-trailer', 4);
     this.intents.set('show-review', 5);
     this.intents.set('input.unknown', 4);

@@ -124,11 +124,11 @@ export class MenuPage {
       //this.recognition = new SpeechRecognition();
       this.recognition.lang = 'en-US';
       this.recognition.onnomatch = (event => {
-        this.listeningText = event.results[0][0].transcript;
+        //this.listeningText = event.results[0][0].transcript;
         this.changeDetector.detectChanges();
       });
       this.recognition.onerror = (event => {
-        this.listeningText = event.results[0][0].transcript;
+        //this.listeningText = event.results[0][0].transcript;
         this.changeDetector.detectChanges();
       });
       this.recognition.onresult = (event => {
