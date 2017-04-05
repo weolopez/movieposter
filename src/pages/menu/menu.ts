@@ -142,32 +142,42 @@ export class MenuPage {
       this.recognition.continuous = true;
       this.recognition.onstart = (event => {
         this.isListening = true;
-        this.changeDetector.detectChanges();
+        this.tryToDetectChanges();
       });
       this.recognition.onend = (event => {
         this.isListening = false;
-        this.changeDetector.detectChanges();
+        this.tryToDetectChanges();
       });
       //this.recognition = new SpeechRecognition();
       this.recognition.lang = 'en-US';
       this.recognition.onnomatch = (event => {
         //this.listeningText = event.results[0][0].transcript;
-        this.changeDetector.detectChanges();
+        this.tryToDetectChanges();
       });
       this.recognition.onerror = (event => {
         //this.listeningText = event.results[0][0].transcript;
-        this.changeDetector.detectChanges();
+        this.tryToDetectChanges();
       });
       this.recognition.onresult = (event => {
         this.listeningText = event.results[0][0].transcript;
-        this.changeDetector.detectChanges();
+        this.tryToDetectChanges();
         if (event.results.length > 0) {
           console.log('Output STT: ', event.results[0][0].transcript);
-          this.ask(event.results[0][0].transcript);
+          setTimeout(() => {
+            this.ask(event.results[0][0].transcript);
+          }, 1000);
         }
       });
       this.recognition.start();
     });
+  }
+
+  tryToDetectChanges() {
+    try {
+      this.changeDetector.detectChanges();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   stopRecognition() {
@@ -184,7 +194,7 @@ export class MenuPage {
          this.analytics.addSpeech(text,response.result.action );
          if (null!=page) {
             this.listeningText = response.result.speech;
-            this.changeDetector.detectChanges();
+            this.tryToDetectChanges();
             setTimeout(() => {
               this.itemSelected(page)
               this.initializeListeningText();
@@ -205,7 +215,7 @@ export class MenuPage {
   loadIntents() {
     this.intents.set('show-schedule', 0);
     this.intents.set('show-tickets', 1);
-    this.intents.set('show-imdb', 2);
+    this.intents.set('show-info', 2);
     this.intents.set('show-trailer', 3);
     this.intents.set('show-review', 4);
     this.intents.set('input.unknown', null);
