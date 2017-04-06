@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, Slides } from 'ionic-angular';
 import { MovieService } from '../../app/services/movie.service';
 
 @Component({
@@ -12,12 +12,18 @@ export class TicketsPage {
   @ViewChild('purchaseButton') purchaseButton;
   @ViewChild('changeButton') changeButton;
   @ViewChild('cancelButton') cancelButton;
+  @ViewChild('timeSlides') timeSlides: Slides;
+  @ViewChild('amountSlides') amountSlides: Slides;
+  @ViewChild('ticketTimes') ticketTimes: ElementRef;
+  @ViewChild('ticketAmounts') ticketAmounts: ElementRef;
 
   private unregisterKeyboardListener;
   public selectedMovie = {};
   public currentPage = 1;
   public amounts = [1,2,3,4,5,6,7,8,9,10];
   public selectedButton = 1;
+  private selectedTimeSlide;
+  private selectedAmountSlide;
 
   constructor(
     public navCtrl: NavController,
@@ -59,15 +65,35 @@ export class TicketsPage {
       this.selectedButton--;
       if (this.selectedButton<1) this.selectedButton=3;
     }
+    this.tryToDetectChanges();
+
   }
 
   getNow() {
     return Date.now();
   }
 
+  getActiveSlides() {
+    if (this.currentPage==1) {
+      this.selectedTimeSlide = this.timeSlides.getActiveIndex();
+    }
+    if (this.currentPage==2) {
+      this.selectedAmountSlide = this.amountSlides.getActiveIndex();
+    }
+  }
+  setActiveSlides() {
+    if (this.currentPage==1) {
+      this.timeSlides.slideTo(this.selectedTimeSlide);
+    }
+    if (this.currentPage==2) {
+      this.amountSlides.slideTo(this.selectedAmountSlide);
+    }
+  }
+
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
+        this.getActiveSlides();
         if (this.currentPage==1 || this.currentPage==4) {
           this.navCtrl.pop({animation: "md-transition"});
         } else {
@@ -77,9 +103,11 @@ export class TicketsPage {
         }
         if (this.currentPage==3) this.selectedButton=1;
         this.tryToDetectChanges();
+        //this.setActiveSlides();
         break;
 
       case "ArrowUp":
+        this.getActiveSlides();
         if (this.currentPage==4) {
           this.navCtrl.pop({animation: "md-transition"});
         } else {
@@ -89,6 +117,7 @@ export class TicketsPage {
         }
         if (this.currentPage==3) this.selectedButton=1;
         this.tryToDetectChanges();
+        //this.setActiveSlides();
         break;
 
       case "ArrowRight":

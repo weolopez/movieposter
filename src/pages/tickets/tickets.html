@@ -32,14 +32,14 @@
                 <p>Wave your hand left or right to select an available time. Wave your hand up to select the highlighted item. Wave your hand down to cancel.</p>
             </div>
 
-            <div class="tickets-times">
-                <ion-slides #slides slidesPerView="3" loop pager>
+            <div #ticketTimes class="tickets-times">
+                <ion-slides #timeSlides slidesPerView="3" loop pager>
                     <ion-slide *ngFor="let showtime of selectedMovie.showtimes[0].standard; let i=index">
                         <div class="ticket-showtime">{{showtime.showtime}}</div>
                     </ion-slide>
                 </ion-slides>
-
             </div>
+
         </div>
 
         <div *ngSwitchCase="2" class="tickets-page-2">
@@ -67,14 +67,14 @@
                 <p>You can select up to ten tickets on this screen. For larger amounts, visit our staffed ticket counter or customer service desk</p>
             </div>
 
-            <div class="tickets-times">
-                <ion-slides #slides slidesPerView="3" loop pager>
+            <div #ticketAmounts class="tickets-amounts">
+                <ion-slides #amountSlides slidesPerView="3" loop pager>
                     <ion-slide *ngFor="let amount of amounts">
                         <div class="ticket-showtime">{{amount}}</div>
                     </ion-slide>
                 </ion-slides>
-
             </div>
+
         </div>
 
         <div *ngSwitchCase="3" class="tickets-page-3">
