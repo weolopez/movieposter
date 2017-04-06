@@ -24532,10 +24532,6 @@ ion-navbar.toolbar {
   overflow-y: auto;
 }
 
-.modal-wrapper {
-  height: 460px;
-}
-
 ion-modal .toolbar-background {
   background-color: #009fdb !important;
 }
@@ -24566,6 +24562,9 @@ ion-modal .toolbar .toolbar-title {
 @media (min-width: 1080px) and (min-height: 1920px) {
   html {
     zoom: 1.75;
+  }
+  .modal-wrapper {
+    height: 460px;
   }
 }
 
@@ -24674,7 +24673,9 @@ page-imdb .slide-zoom .slides-wrapper {
 .menu-page .slide-zoom .menu-item {
   position: relative;
   height: 100px;
-  width: 120px;
+  width: 80%;
+  min-width: 90px;
+  max-width: 120px;
   white-space: normal;
   background-color: rgba(0, 0, 0, 0.8);
   background-repeat: no-repeat;
@@ -25032,6 +25033,10 @@ page-tickets .tickets-date {
 page-tickets .swiper-slide-next .slide-zoom .ticket-showtime {
   height: 156px;
   border: 5px solid #009fdb;
+}
+
+page-tickets .tickets-page-2 .slide-zoom {
+  height: 195px;
 }
 
 page-tickets .slide-zoom {

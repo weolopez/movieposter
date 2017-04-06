@@ -93,9 +93,13 @@ export class MenuPage {
         self.modal.onDidDismiss(() => {
           self.startListeningToKeyboard();
           self.modalShowing = false
+          self.slides.enableKeyboardControl(true);
         })
         self.modal.present();
         self.modalShowing = true;
+        self.slides.enableKeyboardControl(false);
+        // This is cheating to solve the bug where Slides doesn't let you reenable keyboard once you turn it off
+        delete self.slides._keyboardUnReg;
     }
     if (this.modalShowing) {
       this.modal.dismiss().then((res) => {
