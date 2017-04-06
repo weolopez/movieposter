@@ -3,6 +3,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {PosterService} from "./poster.service";
 import { BluemixService } from './bluemix.service';
 import { FacesService } from './faces.service';
+import { M2EService } from "./m2e.service";
 
 
 
@@ -16,7 +17,11 @@ export class AnalyticsService{
     private images : any;
 
 
-  constructor(private af: AngularFire, private poster: PosterService, private faces: FacesService, private bluemixService: BluemixService) {
+  constructor(private af: AngularFire, 
+              private poster: PosterService, 
+              private faces: FacesService, 
+              private m2x: M2EService, 
+              private bluemixService: BluemixService) {
     //this.posterid = poster.getPosterID;
     this.posterid = "kelleytest0";
     this.bluemixList = af.database.list('/bluemix/'+this.posterid);
@@ -37,6 +42,17 @@ export class AnalyticsService{
   }
 
   addSpeech(speech, action) {
+    this.m2x.postData({
+            "timestamp":  new Date().toISOString(),
+            "values": {
+              "intent": action,
+              "speech": speech
+            }
+    }).subscribe((result) => {
+          console.log(result);
+        }, (error) => {
+          console.log(error);
+        });
     this.speechList.push({
       timestamp: Date.now(),
       speech: speech,
