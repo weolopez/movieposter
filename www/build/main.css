@@ -24532,6 +24532,10 @@ ion-navbar.toolbar {
   overflow-y: auto;
 }
 
+.modal-wrapper {
+  height: 460px;
+}
+
 ion-modal .toolbar-background {
   background-color: #009fdb !important;
 }
@@ -24594,7 +24598,7 @@ page-imdb .movie-header {
 }
 
 page-imdb .slide-zoom {
-  height: 220px;
+  height: 200px;
   background-color: rgba(255, 255, 255, 0.3);
   overflow: auto;
   margin: auto;
@@ -24630,7 +24634,7 @@ page-imdb .slide-zoom .avatar {
 page-imdb .slide-zoom .menu-item {
   position: relative;
   margin: auto;
-  height: 180px;
+  height: 155px;
   width: 90px;
   white-space: normal;
 }
@@ -25073,7 +25077,7 @@ page-trailer .trailer-holder {
   border-radius: 1em;
   height: 65%;
   width: 100%;
-  background-color: white;
+  background-color: black;
 }
 
 page-trailer .trailer-holder .scroll-content {

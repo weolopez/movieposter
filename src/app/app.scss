@@ -28,6 +28,10 @@
     overflow-y: auto;
 }
 
+.modal-wrapper {
+    height: 460px;
+}
+
 ion-modal {
     .toolbar-background {
         background-color: rgb(0, 159, 219) !important;
