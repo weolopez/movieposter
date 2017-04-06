@@ -6,7 +6,6 @@ import { ImdbPage } from '../../pages/imdb/imdb';
 import { RatingsPage } from '../../pages/ratings/ratings';
 import { TicketsPage } from '../../pages/tickets/tickets';
 import { TrailerPage } from '../../pages/trailer/trailer';
-import { SpeakPage } from '../../pages/speak/speak';
 
 import { ApiaiService } from '../../app/services/apiai.service';
 import { AnalyticsService } from "../../app/services/analytics.service";

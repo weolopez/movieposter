@@ -62,6 +62,33 @@ page-tickets {
             }
         }
     }
+    .tickets-summary {
+        margin-bottom: 2em;
+        ion-row {
+            padding: 0.5em;
+            border-bottom: 1px solid silver;
+            .summary-item-description {
+                font-weight: bold;
+            }
+            .summary-item-amount {
+                text-align: right;
+                font-weight: bold;
+            }
+        }
+    }
+    .tickets-buttons {
+        ion-col {
+            text-align: center;
+            button {
+                width: 90%;
+            }
+            button.selected {
+                background-color: green;
+                color: white;
+                border: 6px solid #009fdb;
+            }
+        }
+    }
     .scroll-content {
         overflow-y: hidden;
     }

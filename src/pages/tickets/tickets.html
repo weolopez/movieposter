@@ -98,16 +98,30 @@
             </div>
 
             <div class="tickets-instructions">
-                <p>Wave your hand left or right to select an available time. Wave your hand up to select the highlighted item. Wave your hand down to cancel.</p>
+                <h6>{{getNow() | date:'fullDate'}}</h6>
             </div>
 
-            <div class="tickets-times">
-                <ion-slides #slides slidesPerView="3" loop pager>
-                    <ion-slide *ngFor="let showtime of selectedMovie.showtimes[0].standard; let i=index">
-                        <div class="ticket-showtime">{{showtime.showtime}}</div>
-                    </ion-slide>
-                </ion-slides>
+            <div class="tickets-summary">
+                <ion-row>
+                    <ion-col width-50 class="summary-item-description">SUBTOTAL</ion-col>
+                    <ion-col width-50 class="summary-item-amount">$20.00</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-50 class="summary-item-description">TAX</ion-col>
+                    <ion-col width-50 class="summary-item-amount">$2.20</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-50 class="summary-item-description">TOTAL AMOUNT</ion-col>
+                    <ion-col width-50 class="summary-item-amount">$22.20</ion-col>
+                </ion-row>
+            </div>
 
+            <div class="tickets-buttons">
+                <ion-row>
+                    <ion-col width-33><button #purchaseButton [ngClass]="{selected: selectedButton==1}" ion-button outline large>Purchase</button></ion-col>
+                    <ion-col width-33><button #changeButton [ngClass]="{selected: selectedButton==2}" ion-button outline large>Change</button></ion-col>
+                    <ion-col width-33><button #cancelButton [ngClass]="{selected: selectedButton==3}" ion-button outline large>Cancel</button></ion-col>
+                </ion-row>
             </div>
         </div>
 

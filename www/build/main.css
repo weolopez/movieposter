@@ -25061,6 +25061,38 @@ page-tickets .slide-zoom .ticket-showtime span {
   height: initial;
 }
 
+page-tickets .tickets-summary {
+  margin-bottom: 2em;
+}
+
+page-tickets .tickets-summary ion-row {
+  padding: 0.5em;
+  border-bottom: 1px solid silver;
+}
+
+page-tickets .tickets-summary ion-row .summary-item-description {
+  font-weight: bold;
+}
+
+page-tickets .tickets-summary ion-row .summary-item-amount {
+  text-align: right;
+  font-weight: bold;
+}
+
+page-tickets .tickets-buttons ion-col {
+  text-align: center;
+}
+
+page-tickets .tickets-buttons ion-col button {
+  width: 90%;
+}
+
+page-tickets .tickets-buttons ion-col button.selected {
+  background-color: green;
+  color: white;
+  border: 6px solid #009fdb;
+}
+
 page-tickets .scroll-content {
   overflow-y: hidden;
 }
