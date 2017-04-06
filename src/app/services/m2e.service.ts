@@ -11,7 +11,7 @@ export class M2EService {
     poster: any;
     accessToken: String;
     public m2eurl ='https://api-m2x.att.com/v2/devices/';
-    public key = 'c7a04867e5c3afe472c34bcd09507037';
+    public key = '76849d0f2f7bd12eb760210a652ab2a6';
     private selectedMovie: any;
     private posterid = 'weotest';
     constructor(private http: Http, private af: AngularFire) {
