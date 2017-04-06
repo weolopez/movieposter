@@ -24519,7 +24519,7 @@ ion-navbar.toolbar {
 
 .poster-page {
   background-position: top;
-  background-size: contain;
+  background-size: auto 93%;
   background-repeat: no-repeat;
   background-color: black;
 }
