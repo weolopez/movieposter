@@ -24518,7 +24518,7 @@ ion-navbar.toolbar {
 }
 
 .poster-page {
-  background-position: center;
+  background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: black;
@@ -24563,6 +24563,21 @@ ion-modal .toolbar .toolbar-title {
   html {
     zoom: 1.75;
   }
+}
+
+page-home .poster-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  border: 3px solid #009fdb;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 3.0em;
+  padding: 0.3em;
+  font-style: italic;
 }
 
 page-imdb h5 {

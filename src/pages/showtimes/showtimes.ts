@@ -23,7 +23,7 @@ export class ShowTimesPage {
         this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
- ionViewDidLoad() {
+  ionViewDidLoad() {
   }
 
   ionViewDidEnter() {
