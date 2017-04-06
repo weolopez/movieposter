@@ -5,27 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-    <div class="movie-header">Checkout - {{selectedMovie.title}}, {{selectedMovie.year}}</div>
+    <div class="tickets-header">Checkout - {{selectedMovie.title}}, {{selectedMovie.year}}</div>
 
     <hr>
 
-    <div class="movie-showtimes">
-        <div class="showtimes-section">
-            <div class="showtimes-type">Standard</div>
-            <div class="showtimes-list">
-                <div class="showtime" *ngFor="let showtime of selectedMovie.showtimes[0].standard; let i=index">{{showtime.showtime}}</div>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="showtimes-section">
-            <div class="showtimes-type">3D</div>
-            <div class="showtimes-list">
-                <div class="showtime" *ngFor="let showtime of selectedMovie.showtimes[0]['3d']; let i=index ">{{showtime.showtime}}</div>
-            </div>
-        </div>
-
+    <div class="tickets-progress">
+        <div class="progress-step">1. Pick a Show Time</div>
+        <div class="progress-step">2. No. of Tickets</div>
+        <div class="progress-step">3. Review Purchase</div>
+        <div class="progress-step">4. Checkout</div>
     </div>
 
 </ion-content>

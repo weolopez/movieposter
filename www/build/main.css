@@ -24887,6 +24887,10 @@ page-showtimes hr {
   margin-bottom: 2em;
 }
 
+page-showtimes .showtimes-header {
+  font-size: 1.5em;
+}
+
 page-showtimes .movie-showtimes {
   height: 10em;
 }
@@ -24981,6 +24985,34 @@ page-speak .pulse {
   animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
+}
+
+page-tickets hr {
+  margin-bottom: 2em;
+}
+
+page-tickets .tickets-progress {
+  height: 2em;
+  display: table;
+  width: 100%;
+}
+
+page-tickets .tickets-progress .progress-step {
+  display: table-cell;
+  font-weight: bold;
+  height: 7em;
+  width: 100px;
+}
+
+page-tickets .tickets-progress .showtimes-list {
+  padding-left: 1em;
+  height: 7em;
+}
+
+page-tickets .tickets-progress .showtimes-list .showtime {
+  width: 20%;
+  display: inline-block;
+  margin-bottom: 1em;
 }
 
 page-trailer .trailer-page {
