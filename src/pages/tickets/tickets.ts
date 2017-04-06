@@ -68,7 +68,7 @@ export class TicketsPage {
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
-        if (this.currentPage==1) {
+        if (this.currentPage==1 || this.currentPage==4) {
           this.navCtrl.pop({animation: "md-transition"});
         } else {
           this.currentPage--;
@@ -78,9 +78,13 @@ export class TicketsPage {
         break;
 
       case "ArrowUp":
-        this.currentPage++;
-        if (this.currentPage>4) this.navCtrl.pop({animation: "md-transition"});
-        this.tryToDetectChanges();
+        if (this.currentPage==4) {
+          this.navCtrl.pop({animation: "md-transition"});
+        } else {
+          this.currentPage++;
+          if (this.currentPage>4) this.navCtrl.pop({animation: "md-transition"});
+          this.tryToDetectChanges();
+        }
         break;
 
       case "ArrowRight":
