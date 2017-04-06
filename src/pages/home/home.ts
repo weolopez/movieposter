@@ -72,7 +72,6 @@ export class HomePage {
           {
             "timestamp":  new Date().toISOString(),
             "values": {
-              "intent": "ShowMenu",
               "movieName": this.selectedMovie['title']
             }
           }
