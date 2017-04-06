@@ -11,6 +11,9 @@ page-tickets {
             font-weight: bold;
             height: 7em;
             width: 100px;
+            .progress-step-text {
+                border-bottom: 4px solid black;
+            }
         }
         .showtimes-list {
             padding-left: 1em;

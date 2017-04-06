@@ -25004,6 +25004,10 @@ page-tickets .tickets-progress .progress-step {
   width: 100px;
 }
 
+page-tickets .tickets-progress .progress-step .progress-step-text {
+  border-bottom: 4px solid black;
+}
+
 page-tickets .tickets-progress .showtimes-list {
   padding-left: 1em;
   height: 7em;
