@@ -75,6 +75,8 @@ export class TicketsPage {
           if (this.currentPage<1) this.currentPage = 1;
           this.tryToDetectChanges();
         }
+        if (this.currentPage==3) this.selectedButton=1;
+        this.tryToDetectChanges();
         break;
 
       case "ArrowUp":
@@ -85,6 +87,8 @@ export class TicketsPage {
           if (this.currentPage>4) this.navCtrl.pop({animation: "md-transition"});
           this.tryToDetectChanges();
         }
+        if (this.currentPage==3) this.selectedButton=1;
+        this.tryToDetectChanges();
         break;
 
       case "ArrowRight":
