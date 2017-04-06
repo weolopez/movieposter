@@ -11,7 +11,7 @@
 
     <div class="tickets-progress">
         <div class="progress-step">
-            <span class="progress-step-text">1. Pick a Show Time</span>
+            <span class="progress-step-text selected">1. Pick a Show Time</span>
         </div>
         <div class="progress-step">
             <span class="progress-step-text">2. No. of Tickets</span>
@@ -24,4 +24,16 @@
         </div>
     </div>
 
+    <div class="tickets-instructions">
+        <p>Wave your hand left or right to select an available time. Wave your hand up to select the highlighted item. Wave your hand down to cancel.</p>
+    </div>
+
+    <div class="tickets-times">
+        <ion-slides #slides slidesPerView="3" loop pager>
+            <ion-slide *ngFor="let showtime of selectedMovie.showtimes[0].standard; let i=index">
+                <div class="ticket-showtime">{{showtime.showtime}}</div>
+            </ion-slide>
+        </ion-slides>
+
+    </div>
 </ion-content>
