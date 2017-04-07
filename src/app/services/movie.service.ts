@@ -18,19 +18,7 @@ export class MovieService{
     }
 
     getMovies() {
-
       return this.af.database.object('/posters/'+this.posterid)
-
-/**
- * TODO Remove
- * change to use firebase
-        let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8',
-                                    "Authorization": "Bearer " + this.accessToken });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.get(this.movieUrl, options)
-            .map(res => res.json())
-            .catch(this.handleError);
- */
     }
 
     handleError(error:any) {
