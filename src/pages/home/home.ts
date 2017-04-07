@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MenuPage } from '../menu/menu';
+import { InstructionsPage } from '../instructions/instructions';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { MovieService } from '../../app/services/movie.service';
 import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
@@ -52,9 +53,9 @@ export class HomePage {
     this.goToPage(MenuPage);
   }
 
-  presentModal() {
+  presentModal(page) {
     if (!this.modalShowing) {
-      this.modal = this.modalCtrl.create(MenuPage, {}, { showBackdrop: false });
+      this.modal = this.modalCtrl.create(page, {}, { showBackdrop: false });
       this.modal.onDidDismiss(() => this.modalShowing = false)
       this.modal.present();
       this.modalShowing = true;
@@ -66,7 +67,7 @@ export class HomePage {
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowUp":
-        this.presentModal();
+        this.presentModal(MenuPage);
         this.analytics.analyzeImage();
         this.m2e.postData(
           {
@@ -84,6 +85,10 @@ export class HomePage {
 
       case "Escape":
         this.navCtrl.pop({ animation: "md-transition" });
+        break;
+
+      case " ":
+        this.presentModal(InstructionsPage);
         break;
 
       default:
