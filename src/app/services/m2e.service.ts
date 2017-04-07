@@ -13,12 +13,21 @@ export class M2EService {
     public m2eurl ='https://api-m2x.att.com/v2/devices/';
     public key = '76849d0f2f7bd12eb760210a652ab2a6';
     private selectedMovie: any;
-    private posterid = 'blainetest';
+    private posterid: string;
 
     constructor(private http: Http, private af: AngularFire) {
+        this.posterid = this.getPosterId();
         af.database.object('/posters/'+this.posterid).subscribe(
             data=>this.poster=data
         )
+    }
+    getPosterId() {
+        localStorage.getItem('posterid');
+        if (!this.posterid) {
+            this.posterid = 'blainetest';
+            localStorage.setItem('posterid', this.posterid);
+        }
+        return this.posterid;
     }
 
     getData(id: string = this.poster.m2eid, key: string = this.poster.m2ekey) {

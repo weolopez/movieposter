@@ -28,7 +28,7 @@ export class PosterService {
 
         storage.ready().then(() => {
             storage.get('posterID').then((val) => {
-                console.log('PosterID is', val);
+              //  console.log('PosterID is', val);
                 if (!val) {
                     val = this.getPosterID();
                     storage.set('posterID', val);
