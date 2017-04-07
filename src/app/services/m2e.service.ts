@@ -35,6 +35,7 @@ export class M2EService {
         return this.posterid;
     }
     newFirebaseDevice(data) {
+        
             let defaultPoster = {};
             this.posterid = this.generateUUID();
 
@@ -106,7 +107,8 @@ export class M2EService {
 
     handleError(error: any) {
         console.error(error);
-        return Observable.throw(error.json().error || 'M2E Server error');
+        localStorage.setItem('posterid','blainetest');
+        return Observable.defer(error.json().error || 'M2E Server error');
     }
 
     generateUUID() {
