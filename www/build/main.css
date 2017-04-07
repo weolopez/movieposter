@@ -24656,6 +24656,35 @@ page-imdb .slide-zoom .slides-wrapper {
   height: 100%;
 }
 
+page-instructions .instructions-page {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+page-instructions .instruction-slide {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+page-instructions .slide-zoom {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+page-instructions .scroll-content {
+  overflow-y: hidden;
+}
+
+page-instructions .slides-wrapper {
+  height: 100%;
+}
+
 .menu-page .menu-item {
   border-radius: 10px;
 }

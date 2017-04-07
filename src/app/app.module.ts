@@ -14,6 +14,7 @@ import { TicketsPage } from '../pages/tickets/tickets';
 import { TrailerPage } from '../pages/trailer/trailer';
 import { ActorsPage } from '../pages/actors/actors';
 import { SpeakPage } from '../pages/speak/speak';
+import { InstructionsPage } from '../pages/instructions/instructions';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -48,7 +49,8 @@ export const firebaseConfig = {
     TicketsPage,
     TrailerPage,
     ActorsPage,
-    SpeakPage
+    SpeakPage,
+    InstructionsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -68,7 +70,8 @@ export const firebaseConfig = {
     TicketsPage,
     TrailerPage,
     ActorsPage,
-    SpeakPage
+    SpeakPage,
+    InstructionsPage
   ],
   providers: [
     StatusBar,

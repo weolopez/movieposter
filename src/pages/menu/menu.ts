@@ -6,6 +6,7 @@ import { ImdbPage } from '../../pages/imdb/imdb';
 import { RatingsPage } from '../../pages/ratings/ratings';
 import { TicketsPage } from '../../pages/tickets/tickets';
 import { TrailerPage } from '../../pages/trailer/trailer';
+import { InstructionsPage } from '../../pages/instructions/instructions';
 
 import { ApiaiService } from '../../app/services/apiai.service';
 import { AnalyticsService } from "../../app/services/analytics.service";
@@ -131,6 +132,10 @@ export class MenuPage {
       let activeButton = this.slidesWrapper.nativeElement.querySelector('.swiper-slide-next .menu-item');
       let menuItemIndex = activeButton.attributes["data-menu-item"].value;
       this.itemSelected(menuItemIndex);
+      break;
+
+      case " ":
+      this.presentModal(InstructionsPage);
       break;
 
       default:
