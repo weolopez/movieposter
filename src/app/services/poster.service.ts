@@ -13,14 +13,6 @@ export class PosterService {
     posterID: any;
     poster: FirebaseObjectObservable<any>;
 
-    /**
-     * 
-    accessToken: String;
-    public m2eurl ='https://api-m2x.att.com/v2/devices/';
-    public key = 'c7a04867e5c3afe472c34bcd09507037';
-    private selectedMovie: any;
-    private posterid = 'weotest';
-     */
     constructor(
         private storage: Storage,
         private http: Http,
@@ -28,7 +20,7 @@ export class PosterService {
 
         storage.ready().then(() => {
             storage.get('posterID').then((val) => {
-                console.log('PosterID is', val);
+              //  console.log('PosterID is', val);
                 if (!val) {
                     val = this.getPosterID();
                     storage.set('posterID', val);
