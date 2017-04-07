@@ -25,6 +25,10 @@ page-tickets {
     .tickets-instructions {
         margin-bottom: 30px;
     }
+    .tickets-date {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
     .swiper-slide-next {
         .slide-zoom {
             .ticket-showtime {
@@ -32,6 +36,9 @@ page-tickets {
                 border: 5px solid rgb(0, 159, 219);
             }
         }
+    }
+    .tickets-page-2 .slide-zoom {
+        height: 195px;
     }
     .slide-zoom {
         height: 210px;
@@ -61,6 +68,66 @@ page-tickets {
                 height: initial;
             }
         }
+    }
+    .tickets-summary {
+        margin-bottom: 2em;
+        ion-row {
+            padding: 0.5em;
+            border-bottom: 1px solid silver;
+            .summary-item-description {
+                font-weight: bold;
+            }
+            .summary-item-amount {
+                text-align: right;
+                font-weight: bold;
+            }
+        }
+    }
+    .tickets-buttons {
+        ion-col {
+            text-align: center;
+            button {
+                width: 90%;
+            }
+            button.selected {
+                background-color: green;
+                color: white;
+                border: 6px solid #009fdb;
+            }
+        }
+    }
+    .tickets-success {
+        margin-top: 1em;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        height: 5em;
+        background-image: url(../assets/images/svg/checkOutIcon.svg);
+        background-repeat: no-repeat;
+        background-size: 3.5em;
+        background-position-x: 3.6em;
+    }
+    .tickets-success-text {
+        padding-top: 0.5em;
+        text-align: center;
+        font-size: 1.4em;
+        width: 300px;
+        margin: auto;
+    }
+    .tickets-reminder {
+        margin-top: 1.5em;
+        text-align: center;
+        font-size: 1.4em;
+    }
+    .ticket-number {
+        text-align: center;
+        font-size: 3.4em;
+        font-weight: bold;
+        color: red;
+        width: 300px;
+        margin: auto;
     }
     .scroll-content {
         overflow-y: hidden;

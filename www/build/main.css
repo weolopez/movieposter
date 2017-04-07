@@ -24532,10 +24532,6 @@ ion-navbar.toolbar {
   overflow-y: auto;
 }
 
-.modal-wrapper {
-  height: 460px;
-}
-
 ion-modal .toolbar-background {
   background-color: #009fdb !important;
 }
@@ -24566,6 +24562,9 @@ ion-modal .toolbar .toolbar-title {
 @media (min-width: 1080px) and (min-height: 1920px) {
   html {
     zoom: 1.75;
+  }
+  .modal-wrapper {
+    height: 460px;
   }
 }
 
@@ -24674,7 +24673,9 @@ page-imdb .slide-zoom .slides-wrapper {
 .menu-page .slide-zoom .menu-item {
   position: relative;
   height: 100px;
-  width: 120px;
+  width: 80%;
+  min-width: 90px;
+  max-width: 120px;
   white-space: normal;
   background-color: rgba(0, 0, 0, 0.8);
   background-repeat: no-repeat;
@@ -25024,9 +25025,18 @@ page-tickets .tickets-instructions {
   margin-bottom: 30px;
 }
 
+page-tickets .tickets-date {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 page-tickets .swiper-slide-next .slide-zoom .ticket-showtime {
   height: 156px;
   border: 5px solid #009fdb;
+}
+
+page-tickets .tickets-page-2 .slide-zoom {
+  height: 195px;
 }
 
 page-tickets .slide-zoom {
@@ -25061,6 +25071,75 @@ page-tickets .slide-zoom .ticket-showtime span {
   height: initial;
 }
 
+page-tickets .tickets-summary {
+  margin-bottom: 2em;
+}
+
+page-tickets .tickets-summary ion-row {
+  padding: 0.5em;
+  border-bottom: 1px solid silver;
+}
+
+page-tickets .tickets-summary ion-row .summary-item-description {
+  font-weight: bold;
+}
+
+page-tickets .tickets-summary ion-row .summary-item-amount {
+  text-align: right;
+  font-weight: bold;
+}
+
+page-tickets .tickets-buttons ion-col {
+  text-align: center;
+}
+
+page-tickets .tickets-buttons ion-col button {
+  width: 90%;
+}
+
+page-tickets .tickets-buttons ion-col button.selected {
+  background-color: green;
+  color: white;
+  border: 6px solid #009fdb;
+}
+
+page-tickets .tickets-success {
+  margin-top: 1em;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  height: 5em;
+  background-image: url(../assets/images/svg/checkOutIcon.svg);
+  background-repeat: no-repeat;
+  background-size: 3.5em;
+  background-position-x: 3.6em;
+}
+
+page-tickets .tickets-success-text {
+  padding-top: 0.5em;
+  text-align: center;
+  font-size: 1.4em;
+  width: 300px;
+  margin: auto;
+}
+
+page-tickets .tickets-reminder {
+  margin-top: 1.5em;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+page-tickets .ticket-number {
+  text-align: center;
+  font-size: 3.4em;
+  font-weight: bold;
+  color: red;
+  width: 300px;
+  margin: auto;
+}
+
 page-tickets .scroll-content {
   overflow-y: hidden;
 }
@@ -25075,7 +25154,7 @@ page-trailer .trailer-page {
 
 page-trailer .trailer-holder {
   border-radius: 1em;
-  height: 65%;
+  height: 85%;
   width: 100%;
   background-color: black;
 }

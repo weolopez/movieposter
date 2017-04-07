@@ -6,7 +6,6 @@ import { ImdbPage } from '../../pages/imdb/imdb';
 import { RatingsPage } from '../../pages/ratings/ratings';
 import { TicketsPage } from '../../pages/tickets/tickets';
 import { TrailerPage } from '../../pages/trailer/trailer';
-import { SpeakPage } from '../../pages/speak/speak';
 
 import { ApiaiService } from '../../app/services/apiai.service';
 import { AnalyticsService } from "../../app/services/analytics.service";
@@ -94,9 +93,13 @@ export class MenuPage {
         self.modal.onDidDismiss(() => {
           self.startListeningToKeyboard();
           self.modalShowing = false
+          self.slides.enableKeyboardControl(true);
         })
         self.modal.present();
         self.modalShowing = true;
+        self.slides.enableKeyboardControl(false);
+        // This is cheating to solve the bug where Slides doesn't let you reenable keyboard once you turn it off
+        delete self.slides._keyboardUnReg;
     }
     if (this.modalShowing) {
       this.modal.dismiss().then((res) => {
