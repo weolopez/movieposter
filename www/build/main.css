@@ -24559,6 +24559,13 @@ ion-modal .toolbar .toolbar-title {
   background-repeat: no-repeat;
 }
 
+@media (min-width: 1080px) {
+  .app-protector {
+    bottom: initial !important;
+    display: none !important;
+  }
+}
+
 @media (min-width: 1080px) and (min-height: 1920px) {
   html {
     zoom: 1.75;
@@ -24566,6 +24573,22 @@ ion-modal .toolbar .toolbar-title {
   .modal-wrapper {
     height: 460px;
   }
+}
+
+.app-protector {
+  position: absolute;
+  padding-top: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 4em;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
 page-home .poster-footer {
