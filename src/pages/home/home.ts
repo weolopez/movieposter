@@ -36,7 +36,7 @@ export class HomePage {
     console.log("OnInit Ran...");
     this.analytics.loadImages();
     this.movieService.getMovies().subscribe(response => {
-      this.movieService.setSelectedMovie(response.movie);
+      this.movieService.setSelectedMovie(response);
       this.selectedMovie = this.movieService.getSelectedMovie();
     });
   }

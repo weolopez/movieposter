@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { Http, Headers, RequestOptions, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'
 
@@ -56,6 +56,7 @@ export class M2EService {
             description: 'Digital Interactice Poster',
             visibility: 'public',
             tags: 'BraveHackers',
+            metadata: {'movieid': '-Kh-0hs6tqHEqRbreDIK'},
             base_device: 'fc71ef32c6aa233cd42bffc21f88cf93',
             serial: this.generateUUID()
         }
@@ -69,9 +70,6 @@ export class M2EService {
             .catch(this.handleError)
     }
     getData(id: string = this.id, key: string = this.key) {
-        if (id === undefined) id = this.id;
-        if (key === undefined) key = this.key;
-
         let headers = new Headers({
             'Content-Type': 'application/json; charset=utf-8',
             "X-M2X-KEY": key
@@ -80,11 +78,27 @@ export class M2EService {
         return this.http.get(this.url + '/' + id + '/values', options)
             .catch(this.handleError);
     }
+   
+    getMovieId(id: string = this.id, key: string = this.key): Observable<Response> {
+        let headers = new Headers({
+            'Content-Type': 'application/json; charset=utf-8',
+            "X-M2X-KEY": key
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(this.url + '/' + id + '/metadata/movieid', options)
+            .catch(this.handleError);
+    }
+    putMovieId(movieid: any, id: string = this.id, key: string = this.key) {
+        let headers = new Headers({
+            'Content-Type': 'application/json; charset=utf-8',
+            "X-M2X-KEY": key
+        });
+        let data = { 'value': movieid };
+        let options = new RequestOptions({ headers: headers });
+        return this.http.put(this.url + '/' + id + '/metadata/movieid', data, options);
+    }
 
     getDetails(id: string = this.id, key: string = this.key) {
-        if (id === undefined) id = this.id;
-        if (key === undefined) key = this.key;
-
         let headers = new Headers({
             'Content-Type': 'application/json; charset=utf-8',
             "X-M2X-KEY": key
