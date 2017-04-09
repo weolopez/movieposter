@@ -33,7 +33,7 @@ export class M2XService {
             }
             ).subscribe(r=>
                 console.dir(r), e => {
-                    localStorage.setItem('posterid', 'fc5f7b33e7f4788d389164e2d015269d')
+                    localStorage.setItem('posterid','blainetest');
                     location.reload();
                 }
             )
@@ -172,7 +172,6 @@ export class M2XService {
 
     handleError(error: any) {
         console.error(error);
-        localStorage.setItem('posterid','blainetest');
         return Observable.defer(error.json().error || 'M2E Server error');
     }
 
