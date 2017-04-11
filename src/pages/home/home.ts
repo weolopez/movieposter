@@ -30,25 +30,30 @@ export class HomePage {
     private m2x: M2XService,
     private analytics: AnalyticsService)
   {
-      this.movieService.getMovie().subscribe( r => {
-        r.subscribe( movie =>{
-        console.log('getting movie')
-        console.dir(movie);
-            this.selectedMovie = movie 
-        })
-      })
+    this.getMovie();
   }
 
   ngOnInit() {
     console.log("OnInit Ran...");
     this.analytics.loadImages();
   }
+
   ionViewDidEnter() {
     this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
   }
 
   ionViewDidLeave() {
     this.unregisterKeyboardListener();
+  }
+
+  getMovie() {
+      this.movieService.getMovie().subscribe( r => {
+        r.subscribe( movie =>{
+        console.log('getting movie')
+        console.dir(movie);
+            this.selectedMovie = movie
+        })
+      })
   }
 
   showMenu() {
@@ -58,7 +63,10 @@ export class HomePage {
   presentModal(page) {
     if (!this.modalShowing) {
       this.modal = this.modalCtrl.create(page, {}, { showBackdrop: false });
-      this.modal.onDidDismiss(() => this.modalShowing = false)
+      this.modal.onDidDismiss(() => {
+        this.getMovie();
+        this.modalShowing = false
+      })
       this.modal.present();
       this.modalShowing = true;
     }
