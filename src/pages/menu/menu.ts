@@ -208,6 +208,9 @@ export class MenuPage {
               this.initializeListeningText();
             }, 1000);
          } else {
+            if (text == "help") {
+              this.presentModal(InstructionsPage);
+            }
             setTimeout(() => {
               this.initializeListeningText();
               this.startRecognition();
