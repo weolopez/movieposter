@@ -14,7 +14,7 @@ export class MovieService{
     movieUrl: string;
     private selectedMovie: any;
     public movie: FirebaseObjectObservable<any>;
-    constructor(private http: Http, 
+    constructor(private http: Http,
                 private m2x: M2XService,
                 private af: AngularFire) {
 
@@ -26,6 +26,9 @@ export class MovieService{
               .map(r=> {
                    r = r['movieid'];
                    this.movie = this.af.database.object('/movies/'+r);
+                   this.movie.subscribe((movie) => {
+                     this.setSelectedMovie(movie);
+                   });
                    return this.movie;
               })
     }
