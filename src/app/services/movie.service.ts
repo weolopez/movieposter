@@ -5,7 +5,6 @@ import 'rxjs/Rx'
 
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import { M2XService } from "./m2x.service";
-import { Subscriber } from "rxjs/Subscriber";
 
 @Injectable()
 
@@ -17,8 +16,6 @@ export class MovieService{
     constructor(private http: Http,
                 private m2x: M2XService,
                 private af: AngularFire) {
-
-
     }
     getMovie(): Observable<any> {
       return this.m2x.getMetaData()
