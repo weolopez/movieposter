@@ -24779,6 +24779,8 @@ page-instructions .slides-wrapper {
   font-size: 2em;
   color: white;
   clear: both;
+  float: right;
+  width: 15em;
 }
 
 @-webkit-keyframes pulse_animation {
