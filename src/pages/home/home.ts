@@ -4,8 +4,8 @@ import { InstructionsPage } from '../instructions/instructions';
 import { ApiaiService } from '../../app/services/apiai.service';
 import { MovieService } from '../../app/services/movie.service';
 import { NavController, ModalController, Modal, Platform, ViewController, Gesture } from 'ionic-angular';
-import { M2EService } from "../../app/services/m2e.service";
 import { AnalyticsService } from "../../app/services/analytics.service";
+import { M2XService } from "../../app/services/m2x.service";
 declare var webkitSpeechRecognition: any;
 
 @Component({
@@ -27,20 +27,22 @@ export class HomePage {
     public viewCtrl: ViewController,
     private apiaiService: ApiaiService,
     private movieService: MovieService,
-    private m2e: M2EService,
+    private m2x: M2XService,
     private analytics: AnalyticsService)
   {
+      this.movieService.getMovie().subscribe( r => {
+        r.subscribe( movie =>{
+        console.log('getting movie')
+        console.dir(movie);
+            this.selectedMovie = movie 
+        })
+      })
   }
 
   ngOnInit() {
     console.log("OnInit Ran...");
     this.analytics.loadImages();
-    this.movieService.getMovies().subscribe(response => {
-      this.movieService.setSelectedMovie(response.movie);
-      this.selectedMovie = this.movieService.getSelectedMovie();
-    });
   }
-
   ionViewDidEnter() {
     this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
   }
@@ -69,7 +71,7 @@ export class HomePage {
       case "ArrowUp":
         this.presentModal(MenuPage);
         this.analytics.analyzeImage();
-        this.m2e.postData(
+        this.m2x.postData(
           {
             "timestamp":  new Date().toISOString(),
             "values": {

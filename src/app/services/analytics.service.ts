@@ -3,7 +3,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {PosterService} from "./poster.service";
 import { BluemixService } from './bluemix.service';
 import { FacesService } from './faces.service';
-import { M2EService } from "./m2e.service";
+import { M2XService } from "./m2x.service";
 
 
 
@@ -20,7 +20,7 @@ export class AnalyticsService{
   constructor(private af: AngularFire, 
               private poster: PosterService, 
               private faces: FacesService, 
-              private m2x: M2EService, 
+              private m2x: M2XService, 
               private bluemixService: BluemixService) {
     //this.posterid = poster.getPosterID;
     this.posterid = "kelleytest0";

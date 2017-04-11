@@ -22,12 +22,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MovieService } from './services/movie.service';
 
 import { AngularFireModule } from 'angularfire2';
-import { M2EService } from "./services/m2e.service";
 import { PosterService } from "./services/poster.service";
 import { ApiaiService } from './services/apiai.service';
 import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
 import { FacesService } from "./services/faces.service";
+import { M2XService } from "./services/m2x.service";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -77,7 +77,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     DatePipe,
-    M2EService,
+    M2XService,
     PosterService,
     MovieService,
     ApiaiService,

@@ -21,7 +21,6 @@ export class MoviesPage {
   }
 
    ngOnInit() {
-      this.getMovies();
   }
 
   ionViewDidEnter() {
@@ -49,9 +48,12 @@ export class MoviesPage {
     }
   }
   getMovies() {
+   /**
+    
     this.movieService.getMovies().subscribe(response => {
          this.movies = response;
     });
+    */ 
   }
 
 }
