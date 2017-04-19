@@ -44,7 +44,7 @@ export class MoviesPage {
   movieSelected() {
     if (this.selectedMovie > -1) {
       this.movieService.setSelectedMovie(this.movies[this.selectedMovie]);
-      this.navCtrl.push(HomePage);
+  //    this.navCtrl.push(HomePage);
     }
   }
   getMovies() {

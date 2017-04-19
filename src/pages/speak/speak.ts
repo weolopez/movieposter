@@ -18,7 +18,6 @@ declare var webkitSpeechRecognition: any;
 })
 
 export class SpeakPage {
-  private unregisterKeyboardListener;
   private modal: Modal;
   private modalShowing: Boolean;
   private menuItems;
@@ -50,22 +49,6 @@ export class SpeakPage {
   ionViewDidEnter() {
     this.initializeListeningText();
     this.startRecognition();
-    this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-  }
-
-  ionViewDidLeave() {
-    this.unregisterKeyboardListener();
-  }
-
-  handleKeyboardEvents(event) {
-    switch (event.key) {
-      case "ArrowDown":
-        this.navCtrl.pop({animation: "md-transition"});
-        break;
-
-      default:
-        break;
-    }
   }
 
   startRecognition() {
@@ -155,11 +138,11 @@ export class SpeakPage {
   itemSelected(itemIndex) {
       let menuItem = this.menuItems[itemIndex];
       let page = menuItem.buttonPage;
-      if (menuItem.presentAs == "page") {
-        this.gotoPage(page);
-      } else if (menuItem.presentAs == "modal") {
+   //   if (menuItem.presentAs == "page") {
+ //       this.gotoPage(page);
+ //     } else if (menuItem.presentAs == "modal") {
         this.presentModal(page);
-      }
+   //   }
 
   }
 

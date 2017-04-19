@@ -93,9 +93,10 @@ export class TicketsPage {
   handleKeyboardEvents(event) {
     switch (event.key) {
       case "ArrowDown":
+      /*
         this.getActiveSlides();
         if (this.currentPage==1 || this.currentPage==4) {
-          this.navCtrl.pop({animation: "md-transition"});
+          console.log('this.navCtrl.pop({animation: "md-transition"})');
         } else {
           this.currentPage--;
           if (this.currentPage<1) this.currentPage = 1;
@@ -104,6 +105,7 @@ export class TicketsPage {
         if (this.currentPage==3) this.selectedButton=1;
         this.tryToDetectChanges();
         //this.setActiveSlides();
+        */
         break;
 
       case "ArrowUp":

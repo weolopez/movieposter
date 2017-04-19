@@ -9,7 +9,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 
 export class ActorsPage {
-  private unregisterKeyboardListener;
 
   public actorUrl;
 
@@ -17,27 +16,6 @@ export class ActorsPage {
 
   }
 
-  ionViewDidLoad() {
-  }
-
-  ionViewDidEnter() {
-    this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-  }
-
-  ionViewDidLeave() {
-    this.unregisterKeyboardListener();
-  }
-
-  handleKeyboardEvents(event) {
-    switch (event.key) {
-      case "ArrowDown":
-        this.navCtrl.pop({animation: "md-transition"});
-        break;
-
-      default:
-        break;
-    }
-  }
   getSafeTrailerUrl() {
     let safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.actorUrl);
     return safeUrl;

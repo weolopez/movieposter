@@ -9,7 +9,6 @@ import { MovieService } from '../../app/services/movie.service';
 })
 
 export class ImdbPage {
-  private unregisterKeyboardListener;
   public selectedMovie;
 
   constructor(
@@ -24,26 +23,5 @@ export class ImdbPage {
     this.selectedMovie = this.movieService.getSelectedMovie();
   }
 
-  ionViewDidLoad() {
-  }
-
-  ionViewDidEnter() {
-    this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-  }
-
-  ionViewDidLeave() {
-    this.unregisterKeyboardListener();
-  }
-
-  handleKeyboardEvents(event) {
-    switch (event.key) {
-      case "ArrowDown":
-        this.navCtrl.pop({animation: "md-transition"});
-        break;
-
-      default:
-        break;
-    }
-  }
 
 }
