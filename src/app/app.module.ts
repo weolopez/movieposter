@@ -28,6 +28,7 @@ import { BluemixService } from './services/bluemix.service';
 import { AnalyticsService } from './services/analytics.service';
 import { FacesService } from "./services/faces.service";
 import { M2XService } from "./services/m2x.service";
+import { WebSocketService } from "./services/websocket.service";
 
 export const firebaseConfig = {
     apiKey: "AIzaSyDQ1wWxzlqkGMuB6bL4bQmeyVH7-OfDgzM",
@@ -74,6 +75,7 @@ export const firebaseConfig = {
     InstructionsPage
   ],
   providers: [
+    WebSocketService,
     StatusBar,
     SplashScreen,
     DatePipe,

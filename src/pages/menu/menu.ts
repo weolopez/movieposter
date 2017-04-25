@@ -35,6 +35,9 @@ export class MenuPage {
     public analytics: AnalyticsService,
     private modalController: ModalController
   ) {
+
+    this.events.subscribe('menu:right', () => this.slides.slideNext());
+    this.events.subscribe('menu:left', () => this.slides.slidePrev());
   }
   ngOnInit() {
     this.menuItems = this.getMenuItems();
