@@ -131,6 +131,10 @@ export class MyApp {
         if (msg.message === 'LEFT') this.events.publish('menu:left');
 
         setTimeout( this.getData(), 1000);
+      }, error => {
+        console.dir(error);
+        console.log('Error: '+ error);
+        setTimeout( this.getData(), 1000);
       })
       
   }
