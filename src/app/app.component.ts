@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -34,14 +35,17 @@ export class MyApp {
   isMenuActive = false;
 
   private unregisterKeyboardListener;
+  private lastMessage=0.0;
 
   constructor(private platform: Platform,
+    private http: Http,
     public events: Events,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private wsService: WebSocketService) {
 
-    // 1. subscribe to chatbox
+    /**
+     * 
     this.messages = <Subject<Message>>this.wsService
       .connect(CHAT_URL)
       .map((response: MessageEvent): Message => {
@@ -53,14 +57,52 @@ export class MyApp {
         }
       });
 
+     */
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
       this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
+
+      setTimeout( this.getData(), 1000);
+    });
+  }
+  
+  private serverURL = 'http://zltv2050.vci.att.com:8080/api/clients/bravehackers/3203/10/5650';
+  getData() {
+      /**
+       * websocket implementation
       this.messages.subscribe(msg => {
-        console.log(msg);
+       */
+        this.http.get(this.serverURL)
+        .map(resp => {
+        let data = resp.json().content;
+        return {
+          id: data.id,
+          value: data.value,
+          message: 'UP'
+        }})
+        .subscribe(msg => {
+        
+        let mod = msg.value % 1;
+        if (mod != this.lastMessage) {
+              console.log("New Message: "+mod);
+              this.lastMessage = mod;
+        }
+        else {
+          console.log("Mod: "+mod);
+          console.log("lastmessage: "+this.lastMessage);
+          setTimeout( this.getData(), 1000);
+          return;
+        }
+
+        if (Math.floor(msg.value)==1) msg['message'] = 'LEFT';
+        if (Math.floor(msg.value)==2) msg['message'] = 'RIGHT';
+        if (Math.floor(msg.value)==3) msg['message'] = 'UP';
+        if (Math.floor(msg.value)==4) msg['message'] = 'DOWN';
+
+        console.log('Direction: '+ msg.message);
 
         if (msg.message === 'UP') {
           if (!this.isMenuActive) {
@@ -87,8 +129,10 @@ export class MyApp {
         }
         if (msg.message === 'RIGHT') this.events.publish('menu:right');
         if (msg.message === 'LEFT') this.events.publish('menu:left');
+
+        setTimeout( this.getData(), 1000);
       })
-    });
+      
   }
 
   ionViewDidEnter() {

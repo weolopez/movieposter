@@ -70,6 +70,7 @@ export class HomePage {
     this.events.subscribe('menu:escape', () => {
       this.stopRecognition();
       this.showingPurchase = false;
+      if (!this.modal) return;
       this.modal.dismiss();
     });
 
