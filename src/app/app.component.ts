@@ -15,12 +15,16 @@ import { WebSocketService } from "./services/websocket.service";
 import { Subject } from "rxjs/Subject";
 
 
-const CHAT_URL = 'ws://localhost:3005';
+
+const CHAT_URL = //'ws://localhost:3005';
+   'wss://runm-central.att.io/6bf1777bccc5b/9935c8fe67e8/b460bdada1e22e9/in/flow/ws/sensor';
 const DATA_URL = 'ws://localhost:3006';
 
 export interface Message {
-  author: string,
-  message: string,
+  data: string;
+  value?: number,
+  message?: string,
+  author?: string,
   newDate?: string
 }
 
@@ -44,10 +48,8 @@ export class MyApp {
     splashScreen: SplashScreen,
     private wsService: WebSocketService) {
 
-    /**
-     * 
-    this.messages = <Subject<Message>>this.wsService
-      .connect(CHAT_URL)
+    this.messages = <Subject<Message>> this.wsService.connect(CHAT_URL)
+    /*
       .map((response: MessageEvent): Message => {
         let data = JSON.parse(response.data);
         return {
@@ -56,8 +58,7 @@ export class MyApp {
           newDate: data.newDate
         }
       });
-
-     */
+*/
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -72,19 +73,21 @@ export class MyApp {
   private serverURL = 'http://zltv2050.vci.att.com:8080/api/clients/bravehackers/3203/10/5650';
   getData() {
       /**
-       * websocket implementation
-      this.messages.subscribe(msg => {
-       */
+       * hhtp implementation
         this.http.get(this.serverURL)
-        .map(resp => {
+       */
+      /*  .map(resp => {
         let data = resp.json().content;
         return {
           id: data.id,
           value: data.value,
           message: 'UP'
         }})
-        .subscribe(msg => {
-        
+        */
+      this.messages
+        .subscribe(data => {
+        let msg = JSON.parse(data.data);
+        /*
         let mod = msg.value % 1;
         if (mod != this.lastMessage) {
               console.log("New Message: "+mod);
@@ -93,14 +96,14 @@ export class MyApp {
         else {
           console.log("Mod: "+mod);
           console.log("lastmessage: "+this.lastMessage);
-          setTimeout( this.getData(), 1000);
+       //   setTimeout( this.getData(), 1000);
           return;
         }
-
         if (Math.floor(msg.value)==1) msg['message'] = 'LEFT';
         if (Math.floor(msg.value)==2) msg['message'] = 'RIGHT';
         if (Math.floor(msg.value)==3) msg['message'] = 'UP';
         if (Math.floor(msg.value)==4) msg['message'] = 'DOWN';
+      */
 
         console.log('Direction: '+ msg.message);
 
@@ -130,7 +133,7 @@ export class MyApp {
         if (msg.message === 'RIGHT') this.events.publish('menu:right');
         if (msg.message === 'LEFT') this.events.publish('menu:left');
 
-        setTimeout( this.getData(), 1000);
+   //     setTimeout( this.getData(), 1000);
       })
       
   }

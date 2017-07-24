@@ -24559,14 +24559,14 @@ ion-modal .toolbar .toolbar-title {
   background-repeat: no-repeat;
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 1024px) {
   .app-protector {
     bottom: initial !important;
     display: none !important;
   }
 }
 
-@media (min-width: 1080px) and (min-height: 1920px) {
+@media (min-width: 1024) and (min-height: 1280) {
   html {
     zoom: 1.75;
   }
