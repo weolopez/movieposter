@@ -24566,7 +24566,7 @@ ion-modal .toolbar .toolbar-title {
   }
 }
 
-@media (min-width: 1024) and (min-height: 1280) {
+@media (min-width: 1024px) and (min-height: 1920px) {
   html {
     zoom: 1.75;
   }

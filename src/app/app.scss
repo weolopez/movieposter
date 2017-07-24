@@ -20,6 +20,7 @@
     background-color: black;
 }
 
+
 .menu-page {
     background: transparent;
 }
@@ -55,7 +56,6 @@ ion-modal {
     background-repeat: no-repeat;
 }
 
-//@media (min-width: 1080px) {
 @media (min-width: 1024px) {
     .app-protector {
         bottom: initial !important;
@@ -63,7 +63,7 @@ ion-modal {
     }
 }
 
-@media (min-width: 1024) and (min-height: 1280) {
+@media (min-width: 1024px) and (min-height: 1920px) {
     html {
         zoom: 1.75;
     }
