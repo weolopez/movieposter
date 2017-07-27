@@ -104,11 +104,11 @@ export class MyApp {
        //   setTimeout( this.getData(), 1000);
           return;
         }
+      */
         if (Math.floor(msg.value)==1) msg['message'] = 'LEFT';
         if (Math.floor(msg.value)==2) msg['message'] = 'RIGHT';
         if (Math.floor(msg.value)==3) msg['message'] = 'UP';
         if (Math.floor(msg.value)==4) msg['message'] = 'DOWN';
-      */
 
         if (msg.id !== this.deviceID) return;
         console.log('Direction: ' + msg.message);
