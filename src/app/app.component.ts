@@ -17,7 +17,8 @@ import { Subject } from "rxjs/Subject";
 
 
 const CHAT_URL = //'ws://localhost:3005';
-  'wss://runm-central.att.io/6bf1777bccc5b/9935c8fe67e8/b460bdada1e22e9/in/flow/ws/sensor';
+  'wss://run-scrum2aic-flow.att.io/adb7ef18de59d/8e1d949bbb52/142dfa143104e3d/in/flow/ws/sensor';
+  //'wss://runm-central.att.io/6bf1777bccc5b/9935c8fe67e8/b460bdada1e22e9/in/flow/ws/sensor';
 const DATA_URL = 'ws://localhost:3006';
 
 export interface Message {
@@ -89,6 +90,7 @@ export class MyApp {
         message: 'UP'
       }})
       */
+      //this.http.post()
     this.messages
       .subscribe(data => {
         let msg = JSON.parse(data.data);

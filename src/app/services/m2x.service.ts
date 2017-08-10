@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions, Response } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'
 
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 @Injectable()
 export class M2XService {
