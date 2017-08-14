@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Component } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -71,26 +71,29 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.unregisterKeyboardListener = this.platform.registerListener(this.platform.doc(), 'keydown', (event) => this.handleKeyboardEvents(event), {});
-
+      this.sendObserve();
       setTimeout(this.getData(), 1000);
     });
   }
 
-  private serverURL = 'http://zltv2050.vci.att.com:8080/api/clients/bravehackers/3203/10/5650';
+  //'http://zltv2050.vci.att.com:8080/api/clients/bravehackers/3203/10/5650';
+
+  sendObserve() {
+    const serverURL = 'https://run-scrum2aic-flow.att.io/adb7ef18de59d/8e1d949bbb52/142dfa143104e3d/in/flow/lwm2m';
+    const body = {
+                    'deviceId': this.deviceID,
+                    'operation': 'observe',
+                    'resource': '/3203/10/5650'
+                  };
+    let headers = new Headers()
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(serverURL, body, options).subscribe(resp => {
+      return resp.json().content
+    } );
+  } 
+
   getData() {
-    /**
-     * hhtp implementation
-      this.http.get(this.serverURL)
-     */
-    /*  .map(resp => {
-      let data = resp.json().content;
-      return {
-        id: data.id,
-        value: data.value,
-        message: 'UP'
-      }})
-      */
-      //this.http.post()
     this.messages
       .subscribe(data => {
         let msg = JSON.parse(data.data);
