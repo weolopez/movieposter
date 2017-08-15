@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
+    "ionic": "3.8.1",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
@@ -43,6 +44,9 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-splashscreen"
   ],
+  "config": {
+    "ionic_source_map": "source-map"
+  },
   "cordovaPlatforms": [],
   "description": "movieposter: An Ionic project"
 }

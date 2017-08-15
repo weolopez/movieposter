@@ -89,7 +89,8 @@ export class MyApp {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     this.http.post(serverURL, body, options).subscribe(resp => {
-      return resp.json().content
+      console.dir(resp);
+      return resp;
     } );
   } 
 
