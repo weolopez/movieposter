@@ -81,9 +81,9 @@ export class MyApp {
   sendObserve() {
     const serverURL = 'https://run-scrum2aic-flow.att.io/adb7ef18de59d/8e1d949bbb52/142dfa143104e3d/in/flow/lwm2m';
     const body = {
-                    'deviceId': this.deviceID,
-                    'operation': 'observe',
-                    'resource': '/3203/10/5650'
+                    "deviceId": this.deviceID,
+                    "operation": "observe",
+                    "resource": "/3203/10/5650"
                   };
     let headers = new Headers()
     headers.append('Content-Type', 'application/json');
